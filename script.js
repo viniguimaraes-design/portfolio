@@ -42,7 +42,7 @@ document.addEventListener('keydown', (e) => {
 const projectsData = [{
     id: 1,
     title: "Ecoleta App",
-    description: "Aplicativo para conectar pessoas a pontos de coleta de resíduos recicláveis. Inclui mapa interativo, rota de navegação e gamificação.",
+    description: "Aplicativo para conectar pessoas a pontos de coleta de resíduos recicláveis.",
     tags: ["React Native", "Firebase", "Mapbox"],
     link: "#",
     images: [
@@ -54,8 +54,8 @@ const projectsData = [{
 }, {
     id: 2,
     title: "Dashboard Financeiro",
-    description: "Painel analítico para gestão de finanças pessoais com gráficos dinâmicos, categorização automática de gastos e previsão de orçamento.",
-    tags: ["Vue.js", "D3.js", "Node.js", "MongoDB"],
+    description: "Painel analítico para gestão de finanças pessoais com gráficos dinâmicos.",
+    tags: ["Vue.js", "D3.js", "Node.js"],
     link: "#",
     images: [
         "https://picsum.photos/id/1025/600/400",
@@ -66,8 +66,8 @@ const projectsData = [{
 }, {
     id: 3,
     title: "Plataforma de Cursos Online",
-    description: "Ambiente educacional com videoaulas, sistema de quizzes, certificados e fórum de dúvidas. Suporte para lives e chat em tempo real.",
-    tags: ["Next.js", "Tailwind", "Prisma", "WebRTC"],
+    description: "Ambiente educacional com videoaulas, sistema de quizzes e certificados.",
+    tags: ["Next.js", "Tailwind", "Prisma"],
     link: "#",
     images: [
         "https://picsum.photos/id/1029/600/400",
@@ -188,10 +188,3 @@ function renderProjects() {
 }
 
 renderProjects();
-
-// Função para adicionar projetos (use no console)
-function adicionarProjeto(projeto) {
-    projectsData.push(projeto);
-    renderProjects();
-    console.log('✅ Projeto adicionado!');
-}
