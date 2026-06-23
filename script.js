@@ -1,12 +1,9 @@
-// ===== MENU =====
+// ===== MENU MOBILE =====
 const menuToggle = document.getElementById('menuToggle');
-const sideMenu = document.getElementById('sideMenu');
 const menuOverlay = document.getElementById('menuOverlay');
-const closeMenu = document.getElementById('closeMenu');
 const menuIcon = menuToggle.querySelector('i');
 
 function openMenu() {
-    sideMenu.classList.add('open');
     menuOverlay.classList.add('active');
     menuIcon.className = 'fas fa-times';
     menuIcon.classList.add('rotated');
@@ -14,7 +11,6 @@ function openMenu() {
 }
 
 function closeMenuFn() {
-    sideMenu.classList.remove('open');
     menuOverlay.classList.remove('active');
     menuIcon.className = 'fas fa-bars';
     menuIcon.classList.remove('rotated');
@@ -22,18 +18,19 @@ function closeMenuFn() {
 }
 
 menuToggle.addEventListener('click', () => {
-    if (sideMenu.classList.contains('open')) {
+    if (menuOverlay.classList.contains('active')) {
         closeMenuFn();
     } else {
         openMenu();
     }
 });
 
-closeMenu.addEventListener('click', closeMenuFn);
-menuOverlay.addEventListener('click', closeMenuFn);
+document.querySelectorAll('.fullscreen-menu a').forEach(link => {
+    link.addEventListener('click', closeMenuFn);
+});
 
 document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && sideMenu.classList.contains('open')) {
+    if (e.key === 'Escape' && menuOverlay.classList.contains('active')) {
         closeMenuFn();
     }
 });
@@ -93,7 +90,7 @@ function renderProjects() {
         const card = document.createElement('div');
         card.className = 'project-card';
 
-        // ===== CARROSSEL =====
+        // Carrossel
         const wrapper = document.createElement('div');
         wrapper.className = 'carousel-wrapper';
 
@@ -111,7 +108,6 @@ function renderProjects() {
 
         wrapper.appendChild(track);
 
-        // Botões de navegação (só se houver mais de 1 imagem)
         if (project.images.length > 1) {
             const btnPrev = document.createElement('button');
             btnPrev.className = 'carousel-btn prev';
@@ -124,7 +120,6 @@ function renderProjects() {
             wrapper.appendChild(btnPrev);
             wrapper.appendChild(btnNext);
 
-            // Indicadores (dots)
             const dots = document.createElement('div');
             dots.className = 'carousel-dots';
             project.images.forEach((_, i) => {
@@ -136,7 +131,6 @@ function renderProjects() {
             wrapper.appendChild(dots);
         }
 
-        // ===== HEADER =====
         const header = document.createElement('div');
         header.className = 'project-header';
         const title = document.createElement('h2');
@@ -146,7 +140,6 @@ function renderProjects() {
         header.appendChild(title);
         header.appendChild(icon);
 
-        // ===== DETALHES =====
         const details = document.createElement('div');
         details.className = 'project-details';
         const desc = document.createElement('p');
@@ -162,13 +155,11 @@ function renderProjects() {
         });
         details.appendChild(tagsDiv);
 
-        // ===== MONTAGEM =====
         card.appendChild(wrapper);
         card.appendChild(header);
         card.appendChild(details);
         grid.appendChild(card);
 
-        // ===== LÓGICA DO CARROSSEL =====
         let currentIndex = 0;
         const totalImages = project.images.length;
         
@@ -207,7 +198,6 @@ function renderProjects() {
             });
         }
 
-        // ===== EXPANDIR/RECOLHER =====
         let isOpen = false;
         header.addEventListener('click', () => {
             isOpen = !isOpen;
