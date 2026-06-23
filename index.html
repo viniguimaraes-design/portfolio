@@ -3,43 +3,51 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vini Guimarães</title>
+    <title>Vini Guimarães - Trabalhos</title>
+    <meta name="description" content="Portfólio de Vini Guimarães - Projetos de design e desenvolvimento." />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     <link rel="stylesheet" href="style.css" />
 </head>
 <body>
     <div class="container">
-        <!-- HEADER -->
+        <!-- ===== HEADER ===== -->
         <header class="header">
-            <a href="#" class="logo">
+            <a href="index.html" class="logo">
                 <span class="logo-text">Vini Guimarães</span>
             </a>
+            
+            <!-- Menu Desktop -->
+            <nav class="desktop-menu">
+                <ul>
+                    <li><a href="index.html" class="active">Trabalhos</a></li>
+                    <li><a href="sobre.html">Sobre</a></li>
+                    <li><a href="contato.html">Contatos</a></li>
+                </ul>
+            </nav>
+
+            <!-- Botão Hambúrguer (Mobile) -->
             <button class="menu-toggle" id="menuToggle">
                 <i class="fas fa-bars"></i>
             </button>
         </header>
 
-        <!-- MENU LATERAL -->
-        <div class="menu-overlay" id="menuOverlay"></div>
-        <nav class="side-menu" id="sideMenu">
-            <button class="close-btn" id="closeMenu">
-                <i class="fas fa-times"></i>
-            </button>
-            <div class="menu-title">Navegação</div>
-            <ul>
-                <li><a href="#"><i class="fas fa-home"></i> Início</a></li>
-                <li><a href="#"><i class="fas fa-briefcase"></i> Projetos</a></li>
-                <li><a href="#"><i class="fas fa-user"></i> Sobre</a></li>
-                <li><a href="#"><i class="fas fa-envelope"></i> Contato</a></li>
-            </ul>
-            <div class="social-links">
-                <a href="#"><i class="fab fa-github"></i></a>
-                <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-            </div>
-        </nav>
+        <!-- ===== MENU MOBILE ===== -->
+        <div class="menu-overlay" id="menuOverlay">
+            <nav class="fullscreen-menu">
+                <ul>
+                    <li><a href="index.html" class="active">Trabalhos</a></li>
+                    <li><a href="sobre.html">Sobre</a></li>
+                    <li><a href="contato.html">Contatos</a></li>
+                </ul>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </nav>
+        </div>
 
-        <!-- PROJETOS EM GRID -->
+        <!-- ===== PROJETOS ===== -->
         <div class="projects-grid" id="projectsGrid"></div>
     </div>
 
