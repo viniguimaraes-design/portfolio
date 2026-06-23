@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vini Guimarães - Sobre</title>
+    <meta name="description" content="Conheça Vini Guimarães - Designer e desenvolvedor apaixonado por criar experiências digitais." />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <div class="container">
+        <!-- ===== HEADER ===== -->
+        <header class="header">
+            <a href="index.html" class="logo">
+                <span class="logo-text">Vini Guimarães</span>
+            </a>
+            
+            <!-- Menu Desktop -->
+            <nav class="desktop-menu">
+                <ul>
+                    <li><a href="index.html">Trabalhos</a></li>
+                    <li><a href="sobre.html" class="active">Sobre</a></li>
+                    <li><a href="contato.html">Contatos</a></li>
+                </ul>
+            </nav>
+
+            <!-- Botão Hambúrguer (Mobile) -->
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </header>
+
+        <!-- ===== MENU MOBILE ===== -->
+        <div class="menu-overlay" id="menuOverlay">
+            <nav class="fullscreen-menu">
+                <ul>
+                    <li><a href="index.html">Trabalhos</a></li>
+                    <li><a href="sobre.html" class="active">Sobre</a></li>
+                    <li><a href="contato.html">Contatos</a></li>
+                </ul>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </nav>
+        </div>
+
+        <!-- ===== CONTEÚDO SOBRE ===== -->
+        <div class="page-content">
+            <h1 class="page-title">Sobre</h1>
+            <div class="about-grid">
+                <div class="about-text">
+                    <p>Olá! Meu nome é <strong>Vini Guimarães</strong>. Sou apaixonado por criar soluções digitais que unem design e tecnologia.</p>
+                    <p>Tenho experiência em desenvolvimento front-end, UX/UI e design de produtos. Acredito que bons projetos nascem da colaboração e da atenção aos detalhes.</p>
+                    <p>Fora do trabalho, gosto de [hobbies, interesses, etc.].</p>
+                    
+                    <div class="skills">
+                        <h3>Habilidades</h3>
+                        <div class="tags">
+                            <span>HTML &amp; CSS</span>
+                            <span>JavaScript</span>
+                            <span>React</span>
+                            <span>UX/UI Design</span>
+                            <span>Figma</span>
+                            <span>Photoshop</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <img src="https://picsum.photos/id/1025/400/400" alt="Vini Guimarães" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
