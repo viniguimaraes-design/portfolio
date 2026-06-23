@@ -2,16 +2,17 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
 body {
-    background: #f5f7fb;
-    padding: 0 1rem 2rem 1rem;
+    background: #ffffff;
+    padding: 0 1.5rem 3rem 1.5rem;
+    color: #000000;
 }
 
 .container {
-    max-width: 1200px;
+    max-width: 900px;
     margin: 0 auto;
 }
 
@@ -20,57 +21,36 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1.2rem 0;
-    border-bottom: 2px solid #e9edf4;
-    margin-bottom: 2.5rem;
+    padding: 1.5rem 0;
+    border-bottom: 1px solid #eaeaea;
+    margin-bottom: 2rem;
 }
 
 .logo {
-    display: flex;
-    align-items: center;
-    gap: 0.8rem;
     text-decoration: none;
 }
 
-.logo-icon {
-    width: 48px;
-    height: 48px;
-    background: linear-gradient(135deg, #3b82f6, #8b5cf6);
-    border-radius: 14px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-size: 1.6rem;
-    font-weight: 700;
-    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
-}
-
 .logo-text {
-    font-size: 1.6rem;
-    font-weight: 700;
-    color: #0f172a;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #000000;
+    letter-spacing: -0.3px;
 }
 
-.logo-text span {
-    color: #3b82f6;
-}
-
-/* MENU HAMBÚRGUER */
 .menu-toggle {
     background: none;
-    border: none;
-    font-size: 2rem;
-    color: #0f172a;
+    border: 1px solid #eaeaea;
+    font-size: 1.2rem;
+    color: #000000;
     cursor: pointer;
     padding: 0.4rem 0.8rem;
-    border-radius: 10px;
+    border-radius: 6px;
     transition: background 0.2s;
     z-index: 1001;
 }
 
 .menu-toggle:hover {
-    background: #eef2ff;
+    background: #f5f5f5;
 }
 
 .menu-toggle i {
@@ -81,14 +61,14 @@ body {
     transform: rotate(90deg);
 }
 
+/* MENU LATERAL */
 .menu-overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(15, 23, 42, 0.4);
-    backdrop-filter: blur(4px);
+    background: rgba(0, 0, 0, 0.3);
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.3s ease, visibility 0.3s ease;
@@ -103,13 +83,13 @@ body {
 .side-menu {
     position: fixed;
     top: 0;
-    right: -320px;
-    width: 300px;
+    right: -280px;
+    width: 260px;
     height: 100%;
-    background: white;
-    box-shadow: -10px 0 40px rgba(0, 0, 0, 0.1);
-    padding: 2rem 1.8rem;
-    transition: right 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    background: #ffffff;
+    box-shadow: -4px 0 20px rgba(0, 0, 0, 0.06);
+    padding: 2rem 1.5rem;
+    transition: right 0.3s cubic-bezier(0.22, 1, 0.36, 1);
     z-index: 1000;
     overflow-y: auto;
 }
@@ -121,153 +101,144 @@ body {
 .side-menu .close-btn {
     background: none;
     border: none;
-    font-size: 1.8rem;
-    color: #64748b;
+    font-size: 1.4rem;
+    color: #666;
     cursor: pointer;
     float: right;
-    padding: 0.2rem 0.6rem;
-    border-radius: 8px;
-    transition: background 0.2s;
+    padding: 0.2rem 0.4rem;
 }
 
 .side-menu .close-btn:hover {
-    background: #f1f5f9;
+    color: #000;
 }
 
 .side-menu .menu-title {
-    font-size: 1.8rem;
-    font-weight: 300;
-    color: #1e293b;
-    margin: 2rem 0 1.5rem 0;
-    border-bottom: 2px solid #eef2ff;
-    padding-bottom: 0.8rem;
+    font-size: 1rem;
+    font-weight: 400;
+    color: #888;
+    margin: 2.5rem 0 1.2rem 0;
+    border-bottom: 1px solid #f0f0f0;
+    padding-bottom: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 .side-menu ul {
     list-style: none;
     display: flex;
     flex-direction: column;
-    gap: 0.3rem;
+    gap: 0.2rem;
 }
 
 .side-menu ul li a {
     display: block;
-    padding: 0.9rem 1rem;
-    color: #334155;
+    padding: 0.6rem 0.8rem;
+    color: #000000;
     text-decoration: none;
-    border-radius: 12px;
-    font-size: 1.05rem;
-    font-weight: 500;
-    transition: background 0.2s, color 0.2s;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    font-weight: 400;
+    transition: background 0.2s;
 }
 
 .side-menu ul li a:hover {
-    background: #eef2ff;
-    color: #2563eb;
+    background: #f5f5f5;
 }
 
 .side-menu ul li a i {
-    width: 28px;
-    color: #3b82f6;
+    width: 24px;
+    color: #888;
     margin-right: 0.8rem;
+    font-size: 0.9rem;
 }
 
 .side-menu .social-links {
-    margin-top: 2.5rem;
+    margin-top: 2rem;
     display: flex;
     gap: 1.2rem;
     justify-content: center;
-    border-top: 2px solid #f1f5f9;
-    padding-top: 1.8rem;
+    border-top: 1px solid #f0f0f0;
+    padding-top: 1.5rem;
 }
 
 .side-menu .social-links a {
-    color: #64748b;
-    font-size: 1.6rem;
-    transition: color 0.2s, transform 0.2s;
+    color: #888;
+    font-size: 1.2rem;
+    transition: color 0.2s;
 }
 
 .side-menu .social-links a:hover {
-    color: #3b82f6;
-    transform: translateY(-3px);
-}
-
-.subtitle {
-    color: #64748b;
-    margin-bottom: 3rem;
-    font-size: 1.1rem;
-    border-left: 4px solid #3b82f6;
-    padding-left: 1rem;
+    color: #000;
 }
 
 /* PROJETOS */
 .projects-grid {
     display: flex;
     flex-direction: column;
-    gap: 3rem;
+    gap: 2.5rem;
 }
 
 .project-card {
-    background: white;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-    overflow: hidden;
-    transition: box-shadow 0.3s ease;
+    border-bottom: 1px solid #f0f0f0;
+    padding-bottom: 2rem;
 }
 
-.project-card:hover {
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+.project-card:last-child {
+    border-bottom: none;
 }
 
+/* CARROSSEL - DISCRETO */
 .carousel-wrapper {
+    position: relative;
     width: 100%;
     overflow-x: auto;
     overflow-y: hidden;
     white-space: nowrap;
     scroll-behavior: smooth;
-    padding: 1rem 0;
+    padding: 0.5rem 0;
     cursor: grab;
     scrollbar-width: thin;
-    scrollbar-color: #3b82f6 #e2e8f0;
+    scrollbar-color: #ccc #f5f5f5;
 }
 
 .carousel-wrapper::-webkit-scrollbar {
-    height: 6px;
+    height: 4px;
 }
 
 .carousel-wrapper::-webkit-scrollbar-track {
-    background: #e2e8f0;
+    background: #f5f5f5;
     border-radius: 10px;
 }
 
 .carousel-wrapper::-webkit-scrollbar-thumb {
-    background: #3b82f6;
+    background: #ccc;
     border-radius: 10px;
 }
 
 .carousel-track {
     display: inline-flex;
-    gap: 1.2rem;
-    padding: 0 1rem;
+    gap: 0.8rem;
+    padding: 0 0.2rem;
 }
 
 .carousel-track img {
-    height: 260px;
+    height: 180px;
     width: auto;
-    max-width: 400px;
+    max-width: 300px;
     object-fit: cover;
-    border-radius: 14px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
-    transition: transform 0.2s ease;
+    border-radius: 8px;
+    border: 1px solid #f0f0f0;
     flex-shrink: 0;
+    transition: opacity 0.2s;
 }
 
 .carousel-track img:hover {
-    transform: scale(1.02);
+    opacity: 0.85;
 }
 
+/* HEADER DO PROJETO */
 .project-header {
-    padding: 1.5rem 2rem 0.5rem 2rem;
+    padding: 0.5rem 0 0.2rem 0;
     cursor: pointer;
     display: flex;
     justify-content: space-between;
@@ -276,14 +247,15 @@ body {
 }
 
 .project-header h2 {
-    font-size: 1.8rem;
-    font-weight: 600;
-    color: #0f172a;
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: #000000;
+    letter-spacing: -0.3px;
 }
 
 .project-header i {
-    color: #3b82f6;
-    font-size: 1.4rem;
+    color: #888;
+    font-size: 0.9rem;
     transition: transform 0.3s ease;
 }
 
@@ -291,84 +263,78 @@ body {
     transform: rotate(180deg);
 }
 
+/* DETALHES */
 .project-details {
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1),
-        padding 0.3s ease, opacity 0.4s ease;
+    transition: max-height 0.4s ease, padding 0.3s ease, opacity 0.3s ease;
     opacity: 0;
-    padding: 0 2rem;
-    color: #334155;
-    line-height: 1.7;
+    padding: 0;
+    color: #333;
+    line-height: 1.6;
+    font-size: 0.95rem;
 }
 
 .project-details.open {
-    max-height: 400px;
+    max-height: 300px;
     opacity: 1;
-    padding: 0.5rem 2rem 2rem 2rem;
+    padding: 0.5rem 0 1rem 0;
 }
 
 .project-details p {
-    margin-bottom: 0.8rem;
+    margin-bottom: 0.6rem;
 }
 
 .project-details .tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-top: 0.8rem;
+    gap: 0.4rem;
+    margin-top: 0.6rem;
 }
 
 .project-details .tags span {
-    background: #eef2ff;
-    color: #4338ca;
-    padding: 0.25rem 1rem;
-    border-radius: 30px;
-    font-size: 0.8rem;
-    font-weight: 500;
+    background: #f5f5f5;
+    color: #333;
+    padding: 0.15rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 400;
+    border: 1px solid #eee;
 }
 
 .project-details .btn-link {
     display: inline-block;
     margin-top: 0.8rem;
-    color: #2563eb;
-    font-weight: 500;
+    color: #000;
+    font-weight: 400;
     text-decoration: none;
-    border-bottom: 2px solid transparent;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 0.1rem;
+    font-size: 0.9rem;
     transition: border-color 0.2s;
 }
 
 .project-details .btn-link:hover {
-    border-color: #2563eb;
+    border-color: #000;
 }
 
+/* RESPONSIVO */
 @media (max-width: 640px) {
+    body {
+        padding: 0 1rem 2rem 1rem;
+    }
     .logo-text {
-        font-size: 1.2rem;
-    }
-    .logo-icon {
-        width: 40px;
-        height: 40px;
-        font-size: 1.2rem;
-    }
-    .project-header {
-        padding: 1rem 1.2rem 0.2rem 1.2rem;
+        font-size: 1rem;
     }
     .project-header h2 {
-        font-size: 1.4rem;
-    }
-    .project-details {
-        padding: 0 1.2rem;
-    }
-    .project-details.open {
-        padding: 0.5rem 1.2rem 1.5rem 1.2rem;
+        font-size: 1.1rem;
     }
     .carousel-track img {
-        height: 180px;
-        max-width: 260px;
+        height: 140px;
+        max-width: 200px;
     }
     .side-menu {
-        width: 280px;
-        right: -290px;
+        width: 240px;
+        right: -250px;
     }
 }
