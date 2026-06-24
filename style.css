@@ -1,9 +1,9 @@
-/* ===== RESET ===== */
+/* ===== RESET E FONTE GLOBAL ===== */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-family: 'Catamaran', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 body {
@@ -17,7 +17,7 @@ body {
     margin: 0 auto;
 }
 
-/* ===== HEADER - SEM LINHAS ===== */
+/* ===== HEADER ===== */
 .header {
     display: flex;
     justify-content: space-between;
@@ -34,10 +34,16 @@ body {
 }
 
 .logo-text {
-    font-size: 1.5rem; /* Nome BEM GRANDE */
+    font-size: 2.0rem;
     font-weight: 600;
+    font-variation-settings: 'wght' 600;
     color: #000000;
     letter-spacing: -1px;
+    transition: font-variation-settings 0.3s ease;
+}
+
+.logo-text:hover {
+    font-variation-settings: 'wght' 900;
 }
 
 /* ===== MENU DESKTOP ===== */
@@ -54,22 +60,25 @@ body {
 }
 
 .desktop-menu ul li a {
-    font-size: 0.85rem; /* Menu MENOR */
+    font-size: 0.85rem;
     font-weight: 400;
+    font-variation-settings: 'wght' 400;
     color: #000;
     text-decoration: none;
     letter-spacing: 1.5px;
-    text-transform: uppercase; /* CAIXA ALTA */
+    text-transform: uppercase;
     padding: 0.2rem 0;
-    transition: opacity 0.2s;
+    transition: font-variation-settings 0.3s ease, opacity 0.2s;
 }
 
 .desktop-menu ul li a:hover {
-    opacity: 0.5;
+    font-variation-settings: 'wght' 700;
+    opacity: 0.8;
 }
 
 .desktop-menu ul li a.active {
     font-weight: 600;
+    font-variation-settings: 'wght' 600;
     opacity: 1;
 }
 
@@ -87,18 +96,7 @@ body {
     display: block;
 }
 
-.menu-toggle:hover {
-}
-
-.menu-toggle i {
-    transition: transform 0.3s ease;
-}
-
-.menu-toggle i.rotated {
-    transform: rotate(90deg);
-}
-
-/* ===== MENU MOBILE (tela inteira) ===== */
+/* ===== MENU MOBILE ===== */
 .menu-overlay {
     position: fixed;
     top: 0;
@@ -143,22 +141,25 @@ body {
 }
 
 .fullscreen-menu ul li a {
-    font-size: 1.2rem;
+    font-size: 2.2rem;
     font-weight: 300;
+    font-variation-settings: 'wght' 300;
     color: #000;
     text-decoration: none;
     letter-spacing: 4px;
-    text-transform: uppercase; /* CAIXA ALTA */
-    transition: opacity 0.2s;
+    text-transform: uppercase;
+    transition: font-variation-settings 0.3s ease, opacity 0.2s;
     padding: 0.2rem 0;
 }
 
 .fullscreen-menu ul li a:hover {
-    opacity: 0.5;
+    font-variation-settings: 'wght' 700;
+    opacity: 0.7;
 }
 
 .fullscreen-menu ul li a.active {
     font-weight: 500;
+    font-variation-settings: 'wght' 500;
 }
 
 .fullscreen-menu .social-links {
@@ -198,7 +199,7 @@ body {
     }
 }
 
-/* ===== CARD DO PROJETO - SEM BORDAS ===== */
+/* ===== CARD DO PROJETO ===== */
 .project-card {
     background: #ffffff;
     overflow: hidden;
@@ -226,13 +227,12 @@ body {
     flex-shrink: 0;
 }
 
-/* BOTÕES DO CARROSSEL - SEM BORDAS */
 .carousel-btn {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
     background: rgba(255, 255, 255, 0.85);
-    border: none; /* SEM BORDA */
+    border: none;
     border-radius: 50%;
     width: 32px;
     height: 32px;
@@ -245,7 +245,6 @@ body {
     transition: background 0.2s, opacity 0.2s;
     z-index: 2;
     opacity: 0.7;
-    box-shadow: none; /* SEM SOMBRA */
 }
 
 .carousel-btn:hover {
@@ -256,12 +255,10 @@ body {
 .carousel-btn.prev {
     left: 8px;
 }
-
 .carousel-btn.next {
     right: 8px;
 }
 
-/* INDICADORES (dots) */
 .carousel-dots {
     position: absolute;
     bottom: 10px;
@@ -285,9 +282,9 @@ body {
     background: #ffffff;
 }
 
-/* ===== HEADER DO PROJETO (título + ícone) ===== */
+/* ===== HEADER DO PROJETO ===== */
 .project-header {
-    padding: 0.8rem 0 0.2rem 0; /* SEM padding lateral */
+    padding: 0.8rem 0 0.2rem 0;
     cursor: pointer;
     display: flex;
     justify-content: space-between;
@@ -298,8 +295,14 @@ body {
 .project-header h2 {
     font-size: 1.1rem;
     font-weight: 500;
+    font-variation-settings: 'wght' 500;
     color: #000000;
     letter-spacing: -0.2px;
+    transition: font-variation-settings 0.3s ease;
+}
+
+.project-header:hover h2 {
+    font-variation-settings: 'wght' 700;
 }
 
 .project-header i {
@@ -312,7 +315,7 @@ body {
     transform: rotate(180deg);
 }
 
-/* ===== DETALHES (expansível) ===== */
+/* ===== DETALHES ===== */
 .project-details {
     max-height: 0;
     overflow: hidden;
@@ -327,7 +330,7 @@ body {
 .project-details.open {
     max-height: 400px;
     opacity: 1;
-    padding: 0.2rem 0 1rem 0; /* SEM padding lateral */
+    padding: 0.2rem 0 1rem 0;
 }
 
 .project-details p {
@@ -363,7 +366,6 @@ body {
     letter-spacing: -0.5px;
 }
 
-/* SOBRE */
 .about-grid {
     display: grid;
     grid-template-columns: 2fr 1fr;
@@ -398,7 +400,6 @@ body {
     border-radius: 50%;
 }
 
-/* CONTATO */
 .contact-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -445,7 +446,6 @@ body {
     color: #888;
 }
 
-/* FORMULÁRIO - SEM BORDAS */
 .contact-form {
     display: flex;
     flex-direction: column;
@@ -454,9 +454,9 @@ body {
 
 .contact-form input,
 .contact-form textarea {
-    padding: 0.8rem 0; /* SEM padding lateral */
-    border: none; /* SEM BORDA */
-    border-bottom: 1px solid #eaeaea; /* LINHA FINA SÓ NO FORMULÁRIO (opcional) */
+    padding: 0.8rem 0;
+    border: none;
+    border-bottom: 1px solid #eaeaea;
     font-size: 0.95rem;
     font-family: inherit;
     background: transparent;
@@ -490,16 +490,14 @@ body {
     margin-top: 0.5rem;
 }
 
-/* RESPONSIVO */
+/* ===== RESPONSIVO ===== */
 @media (min-width: 768px) {
     .menu-toggle {
         display: none;
     }
-
     .desktop-menu {
         display: block;
     }
-
     .menu-overlay {
         display: none;
     }
@@ -509,7 +507,6 @@ body {
     .desktop-menu {
         display: none;
     }
-
     .menu-toggle {
         display: block;
     }
@@ -520,7 +517,7 @@ body {
         padding: 0 1rem 2rem 1rem;
     }
     .logo-text {
-        font-size: 1.8rem;
+        font-size: 1.6rem;
     }
     .project-header h2 {
         font-size: 1rem;
