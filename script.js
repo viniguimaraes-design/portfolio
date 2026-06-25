@@ -211,4 +211,7 @@ function renderProjects() {
          }
         });
 
+        });
+}     
+
 renderProjects();
