@@ -1,5 +1,4 @@
 # admin/config.yml
-local_backend: true # Remove essa linha se for fazer deploy (deixa comentado)
 
 backend:
   name: github
