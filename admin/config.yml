@@ -3,7 +3,7 @@ local_backend: true # Remove essa linha se for fazer deploy (deixa comentado)
 
 backend:
   name: github
-  repo: SEU-USUARIO/SEU-REPOSITORIO # ← MUDE AQUI (ex: viniguimaraes/meu-portfolio)
+  repo: rockvinny/portfolio
   branch: main # ou master, dependendo da sua branch principal
 
 media_folder: "assets/images" # Pasta onde as imagens vão ficar
