@@ -119,16 +119,6 @@ function renderProjects() {
             
             wrapper.appendChild(btnPrev);
             wrapper.appendChild(btnNext);
-
-            const dots = document.createElement('div');
-            dots.className = 'carousel-dots';
-            project.images.forEach((_, i) => {
-                const dot = document.createElement('span');
-                if (i === 0) dot.classList.add('active');
-                dot.dataset.index = i;
-                dots.appendChild(dot);
-            });
-            wrapper.appendChild(dots);
         }
 
         const header = document.createElement('div');
