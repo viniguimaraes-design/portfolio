@@ -499,7 +499,7 @@ body {
     }
     .desktop-menu {
         display: block;
-        transform: translateY(-2px);
+        transform: translateY(-4px);
     }
     .menu-overlay {
         display: none;
