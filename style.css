@@ -21,7 +21,8 @@ body {
 /* ===== HEADER ===== */
 .header {
     display: flex;
-    align-items: baseline;  /* ← Alinhamento pela linha de base do texto */
+    justify-content: space-between;
+    align-items: baseline;
     padding: 1.5rem 0 2rem 0;
     margin-bottom: 2rem;
     background: #ffffff;
