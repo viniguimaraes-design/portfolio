@@ -303,14 +303,14 @@ body {
     transition: font-variation-settings 0.3s ease;
 }
 
-.project-header:hover h2 {
-    font-variation-settings: 'wght' 700;
-}
-
 .project-header i {
     color: #888;
     font-size: 0.8rem;
     transition: transform 0.3s ease;
+}
+
+.project-header.open h2 {
+    font-variation-settings: 'wght' 700;  /* Título mais pesado quando aberto */
 }
 
 .project-header i.rotated {
