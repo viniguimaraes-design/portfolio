@@ -124,7 +124,7 @@ body {
 .fullscreen-menu {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-end;
     justify-content: center;
     gap: 2rem;
     width: 100%;
