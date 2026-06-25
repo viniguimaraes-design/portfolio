@@ -21,17 +21,16 @@ body {
 /* ===== HEADER ===== */
 .header {
     display: flex;
-    justify-content: space-between;  /* Mantém o logotipo à esquerda e o menu à direita */
-    align-items: center;
+    align-items: center;  /* ← Remove o space-between */
     padding: 1.5rem 0 2rem 0;
     margin-bottom: 2rem;
     background: #ffffff;
     position: relative;
     z-index: 1001;
-}
 
 .logo {
     text-decoration: none;
+    margin-right: 2.5rem;  /* ← Espaço entre o logotipo e o menu */
 }
 
 .logo-text {
