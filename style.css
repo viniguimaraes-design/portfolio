@@ -20,7 +20,7 @@ body {
 /* ===== HEADER ===== */
 .header {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between;  /* Mantém o logotipo à esquerda e o menu à direita */
     align-items: center;
     padding: 1.5rem 0 2rem 0;
     margin-bottom: 2rem;
@@ -31,6 +31,7 @@ body {
 
 .logo {
     text-decoration: none;
+    margin-right: auto;  /* ← ISSO AQUI FAZ O LOGOTIPO FICAR COLADO NA ESQUERDA */
 }
 
 .logo-text {
