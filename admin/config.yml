@@ -1,0 +1,25 @@
+# admin/config.yml
+local_backend: true # Remove essa linha se for fazer deploy (deixa comentado)
+
+backend:
+  name: github
+  repo: SEU-USUARIO/SEU-REPOSITORIO # ← MUDE AQUI (ex: viniguimaraes/meu-portfolio)
+  branch: main # ou master, dependendo da sua branch principal
+
+media_folder: "assets/images" # Pasta onde as imagens vão ficar
+public_folder: "/assets/images"
+
+collections:
+  - name: "sobre" # Nome da coleção
+    label: "Página Sobre"
+    folder: "content/sobre" # Pasta onde os arquivos vão ficar
+    create: true
+    slug: "index" # Vai criar um arquivo index.md
+    fields:
+      - { label: "Mini Bio", name: "bio", widget: "text" }
+      - label: "Itens da Página Sobre"
+        name: "itens"
+        widget: "list"
+        fields:
+          - { label: "Subtítulo", name: "subtitulo", widget: "string" }
+          - { label: "Conteúdo", name: "conteudo", widget: "text" }
