@@ -259,11 +259,11 @@ body {
 }
 
 .carousel-btn.prev {
-    left: 0.5rem;  /* ← MAIS PRÓXIMO DA LATERAL (quase fora) */
+    left: 0.1rem;  /* ← MAIS PRÓXIMO DA LATERAL (quase fora) */
 }
 
 .carousel-btn.next {
-    right: 0.5rem; /* ← MAIS PRÓXIMO DA LATERAL (quase fora) */
+    right: 0.1rem; /* ← MAIS PRÓXIMO DA LATERAL (quase fora) */
 }
 
 /* ===== MOBILE: setas sempre visíveis ===== */
