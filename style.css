@@ -27,6 +27,7 @@ body {
     background: #ffffff;
     position: relative;
     z-index: 1001;
+}
 
 .logo {
     text-decoration: none;
