@@ -229,60 +229,60 @@ body {
     flex-shrink: 0;
 }
 
+/* ===== SETAS ===== */
 .carousel-btn {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: transparent;  /* ← FUNDO TRANSPARENTE */
+    background: transparent;
     border: none;
-    border-radius: 50%;
-    width: 40px;             /* ← UM POUCO MAIOR PARA O CARACTERE */
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    font-family: 'Catamaran', sans-serif;
+    font-size: 3.5rem;        /* ← MAIORES */
+    font-weight: 300;
+    color: #000;
     cursor: pointer;
-    font-family: 'Catamaran', sans-serif;  /* ← FONTE CATAMARAN */
-    font-size: 2rem;          /* ← TAMANHO DO CARACTERE */
-    font-weight: 300;         /* ← PESO LEVE */
-    color: #000;              /* ← PRETO OPACO */
-    transition: opacity 0.3s ease;  /* ← TRANSIÇÃO SUAVE */
     z-index: 2;
-    opacity: 0.7;             /* ← LEVE TRANSPARÊNCIA */
+    padding: 0 0.5rem;
+    transition: opacity 0.3s ease;
+    
+    /* DESKTOP: invisível por padrão */
+    opacity: 0;
+}
+
+/* DESKTOP: aparece no hover */
+.carousel-wrapper:hover .carousel-btn {
+    opacity: 1;
 }
 
 .carousel-btn:hover {
-    opacity: 0.3;             /* ← FICA MAIS SUAVE NO HOVER */
+    opacity: 0.4;  /* Fica mais suave ao passar o mouse */
 }
 
 .carousel-btn.prev {
-    left: 8px;
+    left: -0.5rem;  /* ← MAIS PRÓXIMO DA LATERAL (quase fora) */
 }
+
 .carousel-btn.next {
-    right: 8px;
+    right: -0.5rem; /* ← MAIS PRÓXIMO DA LATERAL (quase fora) */
 }
 
+/* ===== MOBILE: setas sempre visíveis ===== */
+@media (max-width: 767px) {
+    .carousel-btn {
+        opacity: 0.6;  /* Sempre visíveis no mobile */
+        font-size: 2.5rem;
+    }
+    .carousel-btn.prev {
+        left: 0.2rem;
+    }
+    .carousel-btn.next {
+        right: 0.2rem;
+    }
+}
+
+/* ===== BOLINHAS REMOVIDAS ===== */
 .carousel-dots {
-    position: absolute;
-    bottom: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 6px;
-    z-index: 2;
-}
-
-.carousel-dots span {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.5);
-    cursor: pointer;
-    transition: background 0.3s;
-}
-
-.carousel-dots span.active {
-    background: #ffffff;
+    display: none;  /* Some com as bolinhas */
 }
 
 /* ===== HEADER DO PROJETO ===== */
