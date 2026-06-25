@@ -548,3 +548,69 @@ body {
         font-size: 1.6rem;
     }
 }
+/* ===== PÁGINA SOBRE ===== */
+
+.about-page {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem 0 4rem 0;
+}
+
+/* Mini bio */
+.bio {
+    font-size: 1.4rem;
+    line-height: 1.7;
+    font-weight: 300;
+    margin-bottom: 3.5rem;
+    max-width: 800px;
+}
+
+/* Grid de duas colunas */
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem 4rem;
+}
+
+/* Cada item (subtítulo + conteúdo) */
+.about-item {
+    margin-bottom: 2.5rem;
+}
+
+.about-item h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-bottom: 0.6rem;
+    color: #000;
+}
+
+.about-item p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 0.4rem;
+    color: #222;
+}
+
+.about-item p strong {
+    font-weight: 500;
+}
+
+/* ===== MOBILE ===== */
+@media (max-width: 768px) {
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+    }
+
+    .bio {
+        font-size: 1.2rem;
+        line-height: 1.6;
+        margin-bottom: 2.5rem;
+    }
+
+    .about-item {
+        margin-bottom: 2rem;
+    }
+}
