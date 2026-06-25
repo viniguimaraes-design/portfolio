@@ -200,11 +200,15 @@ function renderProjects() {
 
         let isOpen = false;
         header.addEventListener('click', () => {
-            isOpen = !isOpen;
-            details.classList.toggle('open', isOpen);
-            icon.className = isOpen ? 'fas fa-minus' : 'fas fa-plus';
+         isOpen = !isOpen;
+         details.classList.toggle('open', isOpen);
+         icon.className = isOpen ? 'fas fa-minus' : 'fas fa-plus';
+
+         if (isOpen) {
+            header.classList.add('open');   // Título fica pesado
+         } else {
+            header.classList.remove('open'); // Título volta ao normal
+         }
         });
-    });
-}
 
 renderProjects();
