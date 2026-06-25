@@ -1,19 +1,17 @@
-# admin/config.yml
-
 backend:
   name: github
   repo: rockvinny/portfolio
-  branch: main # ou master, dependendo da sua branch principal
+  branch: main
 
-media_folder: "assets/images" # Pasta onde as imagens vão ficar
+media_folder: "assets/images"
 public_folder: "/assets/images"
 
 collections:
-  - name: "sobre" # Nome da coleção
+  - name: "sobre"
     label: "Página Sobre"
-    folder: "content/sobre" # Pasta onde os arquivos vão ficar
+    folder: "content/sobre"
     create: true
-    slug: "index" # Vai criar um arquivo index.md
+    slug: "index"
     fields:
       - { label: "Mini Bio", name: "bio", widget: "text" }
       - label: "Itens da Página Sobre"
