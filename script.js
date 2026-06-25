@@ -111,11 +111,11 @@ function renderProjects() {
         if (project.images.length > 1) {
             const btnPrev = document.createElement('button');
             btnPrev.className = 'carousel-btn prev';
-            btnPrev.innerHTML = '<i class="fas fa-chevron-left"></i>';
+            btnPrev.innerHTML = '‹';  // ← AGORA É UM CARACTERE
             
             const btnNext = document.createElement('button');
             btnNext.className = 'carousel-btn next';
-            btnNext.innerHTML = '<i class="fas fa-chevron-right"></i>';
+            btnNext.innerHTML = '›';  // ← AGORA É UM CARACTERE
             
             wrapper.appendChild(btnPrev);
             wrapper.appendChild(btnNext);
