@@ -509,7 +509,7 @@ body {
 
 @media (max-width: 767px) {
     .header {
-        justify-content: space-between;  /* ← ADICIONE AQUI */
+        justify-content: space-between; 
     }
     .desktop-menu {
         display: none;
@@ -528,11 +528,6 @@ body {
     }
     .project-header h2 {
         font-size: 1rem;
-    }
-    .carousel-btn {
-        width: 28px;
-        height: 28px;
-        font-size: 0.7rem;
     }
     .about-grid {
         grid-template-columns: 1fr;
