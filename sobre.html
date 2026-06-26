@@ -168,7 +168,7 @@ for (let linha of item.conteudo) {
         const descricao = partes.slice(1).join(' ');
         linhasProcessadas.push(`${negrito}<br>${descricao}`);
     } else {
-        const linhaConvertida = linha.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+        const linhaConvertida = linha.replace(/\n/g, '<br>').replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
         linhasProcessadas.push(linhaConvertida);
     }
 }
