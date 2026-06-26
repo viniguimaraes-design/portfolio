@@ -157,14 +157,21 @@
         const col1 = [];
         const col2 = [];
         itens.forEach((item, index) => {
-            let linhasProcessadas = [];
+            let conteudoHTML = '';
             for (let linha of item.conteudo) {
-                // Converte **texto** para <strong>texto</strong>
-                const linhaConvertida = linha.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
-                linhasProcessadas.push(linhaConvertida);
+                // Divide a linha em partes: antes e depois do primeiro \n (se houver)
+                const partes = linha.split('\n');
+                if (partes.length > 1) {
+                    // Se tem quebra de linha, a primeira parte vira negrito e o resto vem depois com <br>
+                    const negrito = partes[0].replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+                    const descricao = partes.slice(1).join(' ');
+                    conteudoHTML += `<p>${negrito}<br>${descricao}</p>`;
+                } else {
+                    // Se não tem quebra, trata como uma linha só
+                    const linhaConvertida = linha.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+                    conteudoHTML += `<p>${linhaConvertida}</p>`;
+                }
             }
-            // 👇 AQUI: junta tudo em um único <p> com <br> entre as linhas
-            const conteudoHTML = `<p>${linhasProcessadas.join('<br>')}</p>`;
             
             const itemHtml = `
                 <div class="about-item">
