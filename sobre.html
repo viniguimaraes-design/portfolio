@@ -136,13 +136,14 @@
                         if (!grupos[subtitulo]) {
                             grupos[subtitulo] = [];
                         }
-                        // Dividimos o conteúdo por quebras de linha para criar vários parágrafos
-                        const linhasConteudo = conteudo.split('\n');
-                        for (let linha of linhasConteudo) {
-                            if (linha.trim() !== '') {
-                                grupos[subtitulo].push(linha.trim());
-                            }
-                        }
+                        // Divide o conteúdo por quebras de linha e mantém a estrutura
+         const linhasConteudo = conteudo.split('\n');
+         for (let linha of linhasConteudo) {
+         if (linha.trim() !== '') {
+                       // Mantém a linha intacta (com espaços e tudo)
+         grupos[subtitulo].push(linha.trim());
+    }
+}
                     }
                 }
 
