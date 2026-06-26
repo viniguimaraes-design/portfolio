@@ -534,10 +534,6 @@ body {
         line-height: 1.6;
         margin-bottom: 2.5rem;
     }
-
-    .about-item {
-        margin-bottom: 2rem;
-    }
 }
 
 @media (max-width: 640px) {
