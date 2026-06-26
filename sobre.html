@@ -98,7 +98,7 @@
                 const response = await fetch(URL_PLANILHA);
                 const csv = await response.text();
 
-                // Converte CSV em array
+                // Converte CSV em array, lidando com campos entre aspas
                 const linhas = csv.split('\n').filter(linha => linha.trim() !== '');
                 const cabecalho = linhas[0].split(',').map(item => item.trim().toLowerCase());
                 
@@ -110,10 +110,26 @@
                 let bioText = '';
 
                 for (let i = 1; i < linhas.length; i++) {
-                    // Pega os valores respeitando as aspas
-                    const colunas = linhas[i].match(/(".*?"|[^,]*)(,|$)/g).map(c => c.replace(/^,|,$/g, '').trim());
-                    const subtitulo = (colunas[idxSubtitulo] || '').replace(/^"|"$/g, '').trim();
-                    let conteudo = (colunas[idxConteudo] || '').replace(/^"|"$/g, '').trim();
+                    // ===== PARSER: lê o CSV respeitando aspas =====
+                    const campos = [];
+                    let campoAtual = '';
+                    let dentroAspas = false;
+
+                    for (let char of linhas[i]) {
+                        if (char === '"') {
+                            dentroAspas = !dentroAspas;
+                        } else if (char === ',' && !dentroAspas) {
+                            campos.push(campoAtual.trim());
+                            campoAtual = '';
+                        } else {
+                            campoAtual += char;
+                        }
+                    }
+                    campos.push(campoAtual.trim()); // Último campo
+
+                    // Pega os valores
+                    const subtitulo = (campos[idxSubtitulo] || '').replace(/^"|"$/g, '').trim();
+                    let conteudo = (campos[idxConteudo] || '').replace(/^"|"$/g, '').trim();
 
                     if (subtitulo.toLowerCase() === 'bio') {
                         bioText = conteudo;
