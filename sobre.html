@@ -46,7 +46,8 @@
 
         <!-- ===== CONTEÚDO SOBRE ===== -->
         <section class="about-page" id="about-content">
-            <!-- O conteúdo será carregado via JavaScript -->
+            <div class="bio" id="bio-text"></div>
+            <div class="about-grid" id="about-grid"></div>
         </section>
 
     </div>
@@ -89,45 +90,49 @@
             }
         });
 
-        // ===== CARREGAR CONTEÚDO DO CMS =====
-        async function carregarSobre() {
+        // ===== CARREGAR DADOS DO GOOGLE SHEETS =====
+        const URL_PLANILHA = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRY-iRbNiuud4l3m93tk2I4wK4OgWj55HaXimi5x-gSNUCQMbZnV7RBhHfPbJsgYZlVTvJiGzcw_FeM/pub?gid=1089009557&single=true&output=csv';
+
+        async function carregarDados() {
             try {
-                const response = await fetch('/content/sobre/index.md');
-                const markdown = await response.text();
+                const response = await fetch(URL_PLANILHA);
+                const csv = await response.text();
 
-                // Parse do frontmatter (YAML)
-                const partes = markdown.split('---');
-                const frontmatter = partes[1];
-                const conteudo = partes[2] || '';
+                // Converte CSV em array
+                const linhas = csv.split('\n').filter(linha => linha.trim() !== '');
+                const cabecalho = linhas[0].split(',').map(item => item.trim().toLowerCase());
+                
+                // Pega o índice das colunas
+                const idxSubtitulo = cabecalho.indexOf('subtitulo');
+                const idxConteudo = cabecalho.indexOf('conteudo');
 
-                // Extrair bio
-                const bioMatch = frontmatter.match(/bio:\s*"([^"]*)"/);
-                const bio = bioMatch ? bioMatch[1] : '';
-
-                // Extrair itens
-                const itensMatch = frontmatter.match(/itens:\s*([\s\S]*?)(?=\n\w|$)/);
-                let itens = [];
-                if (itensMatch) {
-                    const raw = itensMatch[1];
-                    const regex = /-\s*subtitulo:\s*"([^"]*)"\s*conteudo:\s*\|?\s*([\s\S]*?)(?=\n\s*-|\n\s*$|$)/g;
-                    let match;
-                    while ((match = regex.exec(raw)) !== null) {
-                        itens.push({
-                            subtitulo: match[1],
-                            conteudo: match[2].trim()
-                        });
+                // Pula o cabeçalho e monta os dados
+                const itens = [];
+                const bioItems = [];
+                
+                for (let i = 1; i < linhas.length; i++) {
+                    const colunas = linhas[i].split(',').map(item => item.trim());
+                    const subtitulo = colunas[idxSubtitulo] || '';
+                    const conteudo = colunas[idxConteudo] || '';
+                    
+                    if (subtitulo.toLowerCase() === 'bio') {
+                        bioItems.push(conteudo);
+                    } else {
+                        itens.push({ subtitulo, conteudo });
                     }
                 }
 
-                // Renderizar
-                const container = document.getElementById('about-content');
+                // Renderiza a bio
+                const bioElement = document.getElementById('bio-text');
+                if (bioItems.length > 0) {
+                    bioElement.innerHTML = `<p>${bioItems.join(' ')}</p>`;
+                }
+
+                // Renderiza os itens em grid
+                const grid = document.getElementById('about-grid');
                 let html = '';
-
-                // Bio
-                html += `<div class="bio"><p>${bio}</p></div>`;
-
-                // Itens em grid
-                html += `<div class="about-grid">`;
+                
+                // Divide em duas colunas
                 const col1 = [];
                 const col2 = [];
                 itens.forEach((item, index) => {
@@ -143,19 +148,18 @@
                         col2.push(itemHtml);
                     }
                 });
+
                 html += `<div class="about-col">${col1.join('')}</div>`;
                 html += `<div class="about-col">${col2.join('')}</div>`;
-                html += `</div>`;
-
-                container.innerHTML = html;
+                grid.innerHTML = html;
 
             } catch (error) {
-                console.error('Erro ao carregar conteúdo:', error);
-                document.getElementById('about-content').innerHTML = '<p>Erro ao carregar conteúdo. Tente novamente mais tarde.</p>';
+                console.error('Erro ao carregar dados:', error);
+                document.getElementById('about-content').innerHTML = '<p>Erro ao carregar conteúdo. Verifique se a planilha está publicada.</p>';
             }
         }
 
-        carregarSobre();
+        carregarDados();
     </script>
 </body>
 </html>
