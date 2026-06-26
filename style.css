@@ -31,7 +31,7 @@ body {
 
 .logo {
     text-decoration: none;
-    margin-right: 2.5rem;  /* ← Espaço entre o logotipo e o menu */
+    margin-right: 2.5rem;
 }
 
 .logo-text {
@@ -57,7 +57,7 @@ body {
 .desktop-menu ul li a {
     font-size: 0.85rem;
     font-weight: 400;
-    font-variation-settings: 'wght' 400;  /* Normal */
+    font-variation-settings: 'wght' 400;
     color: #000;
     text-decoration: none;
     letter-spacing: 1.5px;
@@ -66,24 +66,22 @@ body {
     transition: font-variation-settings 0.3s ease, opacity 0.2s;
 }
 
-/* HOVER: fica BOLD (para todos) */
 .desktop-menu ul li a:hover {
     font-variation-settings: 'wght' 700;
     opacity: 0.8;
 }
 
-/* ACTIVE (página atual): fica PESADO */
 .desktop-menu ul li a.active {
     font-weight: 600;
     font-variation-settings: 'wght' 600;
     opacity: 1;
 }
 
-/* ACTIVE + HOVER: fica MAIS LEVE que o normal */
 .desktop-menu ul li a.active:hover {
-    font-variation-settings: 'wght' 300;  /* Mais leve */
+    font-variation-settings: 'wght' 300;
     opacity: 0.7;
 }
+
 /* ===== BOTÃO HAMBÚRGUER ===== */
 .menu-toggle {
     background: none;
@@ -237,39 +235,35 @@ body {
     background: transparent;
     border: none;
     font-family: 'Catamaran', sans-serif;
-    font-size: 3.5rem;        /* ← MAIORES */
+    font-size: 3.5rem;
     font-weight: 300;
     color: #000;
     cursor: pointer;
     z-index: 2;
     padding: 0 0.5rem;
     transition: opacity 0.3s ease;
-    
-    /* DESKTOP: invisível por padrão */
     opacity: 0;
 }
 
-/* DESKTOP: aparece no hover */
 .carousel-wrapper:hover .carousel-btn {
     opacity: 1;
 }
 
 .carousel-btn:hover {
-    opacity: 0.4;  /* Fica mais suave ao passar o mouse */
+    opacity: 0.4;
 }
 
 .carousel-btn.prev {
-    left: 0.1rem;  /* ← MAIS PRÓXIMO DA LATERAL (quase fora) */
+    left: 0.1rem;
 }
 
 .carousel-btn.next {
-    right: 0.1rem; /* ← MAIS PRÓXIMO DA LATERAL (quase fora) */
+    right: 0.1rem;
 }
 
-/* ===== MOBILE: setas sempre visíveis ===== */
 @media (max-width: 767px) {
     .carousel-btn {
-        opacity: 0.6;  /* Sempre visíveis no mobile */
+        opacity: 0.6;
         font-size: 2.5rem;
     }
     .carousel-btn.prev {
@@ -280,9 +274,8 @@ body {
     }
 }
 
-/* ===== BOLINHAS REMOVIDAS ===== */
 .carousel-dots {
-    display: none;  /* Some com as bolinhas */
+    display: none;
 }
 
 /* ===== HEADER DO PROJETO ===== */
@@ -311,7 +304,7 @@ body {
 }
 
 .project-header.open h2 {
-    font-variation-settings: 'wght' 700;  /* Título mais pesado quando aberto */
+    font-variation-settings: 'wght' 700;
 }
 
 .project-header i.rotated {
@@ -367,40 +360,6 @@ body {
     color: #000000;
     margin-bottom: 1.5rem;
     letter-spacing: -0.5px;
-}
-
-.about-grid {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 3rem;
-    align-items: start;
-}
-
-.about-text p {
-    margin-bottom: 1rem;
-    line-height: 1.8;
-    color: #333;
-}
-
-.about-text strong {
-    color: #000;
-}
-
-.skills {
-    margin-top: 2rem;
-}
-
-.skills h3 {
-    font-size: 1rem;
-    font-weight: 500;
-    margin-bottom: 0.8rem;
-    color: #000;
-}
-
-.about-image img {
-    width: 100%;
-    max-width: 300px;
-    border-radius: 50%;
 }
 
 .contact-grid {
@@ -493,6 +452,51 @@ body {
     margin-top: 0.5rem;
 }
 
+/* ===== PÁGINA SOBRE ===== */
+.about-page {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem 0 4rem 0;
+}
+
+.bio {
+    font-size: 1.4rem;
+    line-height: 1.7;
+    font-weight: 300;
+    margin-bottom: 3.5rem;
+    max-width: 800px;
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem 4rem;
+}
+
+.about-item {
+    margin-bottom: 2.5rem;
+}
+
+.about-item h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-bottom: 0.6rem;
+    color: #000;
+}
+
+.about-item p {
+    font-size: 0.95rem;
+    line-height: 1.4;
+    margin-bottom: 0.8rem;
+    color: #222;
+}
+
+.about-item p strong {
+    font-weight: 500;
+}
+
 /* ===== RESPONSIVO ===== */
 @media (min-width: 768px) {
     .menu-toggle {
@@ -519,85 +523,6 @@ body {
     }
 }
 
-@media (max-width: 640px) {
-    body {
-        padding: 0 1rem 2rem 1rem;
-    }
-    .logo-text {
-        font-size: 1.6rem;
-    }
-    .project-header h2 {
-        font-size: 1rem;
-    }
-    .about-grid {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-    }
-    .about-image {
-        order: -1;
-        text-align: center;
-    }
-    .about-image img {
-        max-width: 200px;
-    }
-    .contact-grid {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-    }
-    .page-title {
-        font-size: 1.6rem;
-    }
-}
-/* ===== PÁGINA SOBRE ===== */
-
-.about-page {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 2rem 0 4rem 0;
-}
-
-/* Mini bio */
-.bio {
-    font-size: 1.4rem;
-    line-height: 1.7;
-    font-weight: 300;
-    margin-bottom: 3.5rem;
-    max-width: 800px;
-}
-
-/* Grid de duas colunas */
-.about-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem 4rem;
-}
-
-/* Cada item (subtítulo + conteúdo) */
-.about-item {
-    margin-bottom: 2.5rem;
-}
-
-.about-item h3 {
-    font-size: 1rem;
-    font-weight: 600;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-    margin-bottom: 0.6rem;
-    color: #000;
-}
-
-.about-item p {
-    font-size: 0.95rem;
-    line-height: 1.4;
-    margin-bottom: 0.8rem;
-    color: #222;
-}
-
-.about-item p strong {
-    font-weight: 500;
-}
-
-/* ===== MOBILE ===== */
 @media (max-width: 768px) {
     .about-grid {
         grid-template-columns: 1fr;
@@ -614,3 +539,22 @@ body {
         margin-bottom: 2rem;
     }
 }
+
+@media (max-width: 640px) {
+    body {
+        padding: 0 1rem 2rem 1rem;
+    }
+    .logo-text {
+        font-size: 1.6rem;
+    }
+    .project-header h2 {
+        font-size: 1rem;
+    }
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    .page-title {
+        font-size: 1.6rem;
+    }
+        }
