@@ -136,12 +136,11 @@
                         if (!grupos[subtitulo]) {
                             grupos[subtitulo] = [];
                         }
-                        // Divide o conteúdo por quebras de linha e mantém a estrutura
-         const linhasConteudo = conteudo.split('\n');
-         for (let linha of linhasConteudo) {
-         if (linha.trim() !== '') {
-                       // Mantém a linha intacta (com espaços e tudo)
-         grupos[subtitulo].push(linha.trim());
+                      // Divide pelo separador "|" (espaço + pipe + espaço)
+const partes = conteudo.split('|');
+for (let parte of partes) {
+    if (parte.trim() !== '') {
+        grupos[subtitulo].push(parte.trim());
     }
 }
                     }
