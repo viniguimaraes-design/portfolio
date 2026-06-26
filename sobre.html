@@ -146,45 +146,42 @@
                     }
                 }
 
-                // Renderiza a bio
-                const bioElement = document.getElementById('bio-text');
-                if (bioText) {
-                    bioElement.innerHTML = `<p>${bioText}</p>`;
-                }
+                        // Renderiza os itens em grid
+        const grid = document.getElementById('about-grid');
+        const itens = Object.keys(grupos).map(subtitulo => ({
+            subtitulo,
+            conteudo: grupos[subtitulo]
+        }));
 
-                // Renderiza os itens em grid
-                const grid = document.getElementById('about-grid');
-                const itens = Object.keys(grupos).map(subtitulo => ({
-                    subtitulo,
-                    conteudo: grupos[subtitulo]
-                }));
+        let html = '';
+        const col1 = [];
+        const col2 = [];
+        itens.forEach((item, index) => {
+            let linhasProcessadas = [];
+            for (let linha of item.conteudo) {
+                // Converte **texto** para <strong>texto</strong>
+                const linhaConvertida = linha.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+                linhasProcessadas.push(linhaConvertida);
+            }
+            // 👇 AQUI: junta tudo em um único <p> com <br> entre as linhas
+            const conteudoHTML = `<p>${linhasProcessadas.join('<br>')}</p>`;
+            
+            const itemHtml = `
+                <div class="about-item">
+                    <h3>${item.subtitulo}</h3>
+                    ${conteudoHTML}
+                </div>
+            `;
+            if (index % 2 === 0) {
+                col1.push(itemHtml);
+            } else {
+                col2.push(itemHtml);
+            }
+        });
 
-                let html = '';
-                const col1 = [];
-                const col2 = [];
-                itens.forEach((item, index) => {
-                    let conteudoHTML = '';
-                    // Agora, cada linha vira um <p> separado
-                    for (let linha of item.conteudo) {
-                        conteudoHTML += `<p>${linha}</p>`;
-                    }
-                    
-                    const itemHtml = `
-                        <div class="about-item">
-                            <h3>${item.subtitulo}</h3>
-                            ${conteudoHTML}
-                        </div>
-                    `;
-                    if (index % 2 === 0) {
-                        col1.push(itemHtml);
-                    } else {
-                        col2.push(itemHtml);
-                    }
-                });
-
-                html += `<div class="about-col">${col1.join('')}</div>`;
-                html += `<div class="about-col">${col2.join('')}</div>`;
-                grid.innerHTML = html;
+        html += `<div class="about-col">${col1.join('')}</div>`;
+        html += `<div class="about-col">${col2.join('')}</div>`;
+        grid.innerHTML = html;
 
             } catch (error) {
                 console.error('Erro ao carregar dados:', error);
