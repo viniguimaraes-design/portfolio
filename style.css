@@ -501,7 +501,7 @@ body {
 .about-item p {
     font-size: 0.95rem;
     line-height: 1.5;          /* ← ENTRELINHA */
-    margin-bottom: 1.5rem;     /* ← ESPAÇO ENTRE PARÁGRAFOS */
+    margin-bottom: 0.5rem;     /* ← ESPAÇO ENTRE PARÁGRAFOS */
     color: #222;
 }
 
