@@ -90,6 +90,44 @@
             }
         });
 
+        // ===== PARSER CSV =====
+        function parseCSV(csv) {
+            const resultado = [];
+            let i = 0;
+            while (i < csv.length) {
+                const linha = [];
+                while (i < csv.length) {
+                    if (csv[i] === '"') {
+                        let campo = '';
+                        i++; // pula aspas de abertura
+                        while (i < csv.length) {
+                            if (csv[i] === '"' && csv[i + 1] === '"') {
+                                campo += '"';
+                                i += 2;
+                            } else if (csv[i] === '"') {
+                                i++; // pula aspas de fechamento
+                                break;
+                            } else {
+                                campo += csv[i++];
+                            }
+                        }
+                        linha.push(campo);
+                    } else {
+                        let campo = '';
+                        while (i < csv.length && csv[i] !== ',' && csv[i] !== '\n') {
+                            campo += csv[i++];
+                        }
+                        linha.push(campo.trim());
+                    }
+                    if (csv[i] === ',') i++;
+                    else break;
+                }
+                if (csv[i] === '\n') i++;
+                if (linha.some(c => c !== '')) resultado.push(linha);
+            }
+            return resultado;
+        }
+
         // ===== CARREGAR DADOS DO GOOGLE SHEETS =====
         const URL_PLANILHA = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRY-iRbNiuud4l3m93tk2I4wK4OgWj55HaXimi5x-gSNUCQMbZnV7RBhHfPbJsgYZlVTvJiGzcw_FeM/pub?gid=1089009557&single=true&output=csv';
 
@@ -98,9 +136,9 @@
                 const response = await fetch(URL_PLANILHA);
                 const csv = await response.text();
 
-                const linhas = csv.split('\n').filter(linha => linha.trim() !== '');
-                const cabecalho = linhas[0].split(',').map(item => item.trim().toLowerCase());
-                
+                const linhas = parseCSV(csv);
+                const cabecalho = linhas[0].map(item => item.trim().toLowerCase());
+
                 const idxSubtitulo = cabecalho.indexOf('subtitulo');
                 const idxConteudo = cabecalho.indexOf('conteudo');
 
@@ -108,34 +146,14 @@
                 let bioText = '';
 
                 for (let i = 1; i < linhas.length; i++) {
-                    const campos = [];
-                    let campoAtual = '';
-                    let dentroAspas = false;
-
-                    for (let char of linhas[i]) {
-                        if (char === '"') {
-                            dentroAspas = !dentroAspas;
-                        } else if (char === ',' && !dentroAspas) {
-                            campos.push(campoAtual.trim());
-                            campoAtual = '';
-                        } else {
-                            campoAtual += char;
-                        }
-                    }
-                    campos.push(campoAtual.trim());
-
-                    const subtitulo = (campos[idxSubtitulo] || '').replace(/^"|"$/g, '').trim();
-                    let conteudo = (campos[idxConteudo] || '').replace(/^"|"$/g, '').trim();
+                    const subtitulo = (linhas[i][idxSubtitulo] || '').trim();
+                    const conteudo = (linhas[i][idxConteudo] || '').trim();
 
                     if (subtitulo.toLowerCase() === 'bio') {
                         bioText = conteudo;
                     } else if (subtitulo && conteudo) {
-                        if (!grupos[subtitulo]) {
-                            grupos[subtitulo] = [];
-                        }
-                        if (conteudo.trim() !== '') {
-                            grupos[subtitulo].push(conteudo);
-                    }
+                        if (!grupos[subtitulo]) grupos[subtitulo] = [];
+                        grupos[subtitulo].push(conteudo);
                     }
                 }
 
@@ -152,19 +170,17 @@
                     conteudo: grupos[subtitulo]
                 }));
 
-                let html = '';
                 const col1 = [];
                 const col2 = [];
                 itens.forEach((item, index) => {
                     let conteudoHTML = '';
                     for (let linha of item.conteudo) {
-                        // Converte **texto** para <strong> e \n para <br>
                         const linhaConvertida = linha
                             .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
                             .replace(/\n/g, '<br>');
                         conteudoHTML += `<p>${linhaConvertida}</p>`;
                     }
-                    
+
                     const itemHtml = `
                         <div class="about-item">
                             <h3>${item.subtitulo}</h3>
@@ -178,6 +194,7 @@
                     }
                 });
 
+                let html = '';
                 html += `<div class="about-col">${col1.join('')}</div>`;
                 html += `<div class="about-col">${col2.join('')}</div>`;
                 grid.innerHTML = html;
