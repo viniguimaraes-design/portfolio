@@ -94,95 +94,58 @@
         const URL_PLANILHA = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRY-iRbNiuud4l3m93tk2I4wK4OgWj55HaXimi5x-gSNUCQMbZnV7RBhHfPbJsgYZlVTvJiGzcw_FeM/pub?gid=1089009557&single=true&output=csv';
 
         async function carregarDados() {
-    try {
-        const response = await fetch(URL_PLANILHA);
-        const csv = await response.text();
+            try {
+                const response = await fetch(URL_PLANILHA);
+                const csv = await response.text();
 
-        // Converte CSV em array
-        const linhas = csv.split('\n').filter(linha => linha.trim() !== '');
-        const cabecalho = linhas[0].split(',').map(item => item.trim().toLowerCase());
-        
-        const idxSubtitulo = cabecalho.indexOf('subtitulo');
-        const idxConteudo = cabecalho.indexOf('conteudo');
+                // Converte CSV em array
+                const linhas = csv.split('\n').filter(linha => linha.trim() !== '');
+                const cabecalho = linhas[0].split(',').map(item => item.trim().toLowerCase());
+                
+                const idxSubtitulo = cabecalho.indexOf('subtitulo');
+                const idxConteudo = cabecalho.indexOf('conteudo');
 
-        // Agrupa os itens por subtítulo
-        const grupos = {};
-        let bioText = '';
+                // Agrupa os itens por subtítulo
+                const grupos = {};
+                let bioText = '';
 
-        for (let i = 1; i < linhas.length; i++) {
-            // Pega os valores respeitando as aspas
-            const colunas = linhas[i].match(/(".*?"|[^,]*)(,|$)/g).map(c => c.replace(/^,|,$/g, '').trim());
-            const subtitulo = (colunas[idxSubtitulo] || '').replace(/^"|"$/g, '').trim();
-            let conteudo = (colunas[idxConteudo] || '').replace(/^"|"$/g, '').trim();
+                for (let i = 1; i < linhas.length; i++) {
+                    // Pega os valores respeitando as aspas
+                    const colunas = linhas[i].match(/(".*?"|[^,]*)(,|$)/g).map(c => c.replace(/^,|,$/g, '').trim());
+                    const subtitulo = (colunas[idxSubtitulo] || '').replace(/^"|"$/g, '').trim();
+                    let conteudo = (colunas[idxConteudo] || '').replace(/^"|"$/g, '').trim();
 
-            if (subtitulo.toLowerCase() === 'bio') {
-                bioText = conteudo;
-            } else if (subtitulo && conteudo) {
-                if (!grupos[subtitulo]) {
-                    grupos[subtitulo] = [];
+                    if (subtitulo.toLowerCase() === 'bio') {
+                        bioText = conteudo;
+                    } else if (subtitulo && conteudo) {
+                        if (!grupos[subtitulo]) {
+                            grupos[subtitulo] = [];
+                        }
+                        grupos[subtitulo].push(conteudo);
+                    }
                 }
-                grupos[subtitulo].push(conteudo);
-            }
-        }
-
-        // Renderiza a bio
-        const bioElement = document.getElementById('bio-text');
-        if (bioText) {
-            bioElement.innerHTML = `<p>${bioText}</p>`;
-        }
-
-        // Renderiza os itens em grid
-        const grid = document.getElementById('about-grid');
-        const itens = Object.keys(grupos).map(subtitulo => ({
-            subtitulo,
-            conteudo: grupos[subtitulo].join('<br />')
-        }));
-
-        let html = '';
-        const col1 = [];
-        const col2 = [];
-        itens.forEach((item, index) => {
-            const itemHtml = `
-                <div class="about-item">
-                    <h3>${item.subtitulo}</h3>
-                    <p>${item.conteudo}</p>
-                </div>
-            `;
-            if (index % 2 === 0) {
-                col1.push(itemHtml);
-            } else {
-                col2.push(itemHtml);
-            }
-        });
-
-        html += `<div class="about-col">${col1.join('')}</div>`;
-        html += `<div class="about-col">${col2.join('')}</div>`;
-        grid.innerHTML = html;
-
-    } catch (error) {
-        console.error('Erro ao carregar dados:', error);
-        document.getElementById('about-content').innerHTML = '<p>Erro ao carregar conteúdo. Verifique se a planilha está publicada.</p>';
-    }
-}
 
                 // Renderiza a bio
                 const bioElement = document.getElementById('bio-text');
-                if (bioItems.length > 0) {
-                    bioElement.innerHTML = `<p>${bioItems.join(' ')}</p>`;
+                if (bioText) {
+                    bioElement.innerHTML = `<p>${bioText}</p>`;
                 }
 
                 // Renderiza os itens em grid
                 const grid = document.getElementById('about-grid');
+                const itens = Object.keys(grupos).map(subtitulo => ({
+                    subtitulo,
+                    conteudo: grupos[subtitulo].join('<br />')
+                }));
+
                 let html = '';
-                
-                // Divide em duas colunas
                 const col1 = [];
                 const col2 = [];
                 itens.forEach((item, index) => {
                     const itemHtml = `
                         <div class="about-item">
                             <h3>${item.subtitulo}</h3>
-                            <p>${item.conteudo.replace(/\n/g, '<br />')}</p>
+                            <p>${item.conteudo}</p>
                         </div>
                     `;
                     if (index % 2 === 0) {
