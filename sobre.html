@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sobre — Vinicius Guimarães</title>
-    <meta name="description" content="Designer, pesquisador e professor. Doutor e mestre em Design pela UERJ." />
+    <meta name="description" content="Designer, pesquisador e professor." />
     <link href="https://fonts.googleapis.com/css2?family=Catamaran:wght@100..900&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     <link rel="stylesheet" href="style.css" />
@@ -110,7 +110,7 @@
                 let bioText = '';
 
                 for (let i = 1; i < linhas.length; i++) {
-                    // ===== PARSER: lê o CSV respeitando aspas =====
+                    // Parser para ler CSV com aspas
                     const campos = [];
                     let campoAtual = '';
                     let dentroAspas = false;
@@ -125,9 +125,8 @@
                             campoAtual += char;
                         }
                     }
-                    campos.push(campoAtual.trim()); // Último campo
+                    campos.push(campoAtual.trim());
 
-                    // Pega os valores
                     const subtitulo = (campos[idxSubtitulo] || '').replace(/^"|"$/g, '').trim();
                     let conteudo = (campos[idxConteudo] || '').replace(/^"|"$/g, '').trim();
 
@@ -137,7 +136,13 @@
                         if (!grupos[subtitulo]) {
                             grupos[subtitulo] = [];
                         }
-                        grupos[subtitulo].push(conteudo);
+                        // Dividimos o conteúdo por quebras de linha para criar vários parágrafos
+                        const linhasConteudo = conteudo.split('\n');
+                        for (let linha of linhasConteudo) {
+                            if (linha.trim() !== '') {
+                                grupos[subtitulo].push(linha.trim());
+                            }
+                        }
                     }
                 }
 
@@ -151,17 +156,23 @@
                 const grid = document.getElementById('about-grid');
                 const itens = Object.keys(grupos).map(subtitulo => ({
                     subtitulo,
-                    conteudo: grupos[subtitulo].join('<br />')
+                    conteudo: grupos[subtitulo]
                 }));
 
                 let html = '';
                 const col1 = [];
                 const col2 = [];
                 itens.forEach((item, index) => {
+                    let conteudoHTML = '';
+                    // Agora, cada linha vira um <p> separado
+                    for (let linha of item.conteudo) {
+                        conteudoHTML += `<p>${linha}</p>`;
+                    }
+                    
                     const itemHtml = `
                         <div class="about-item">
                             <h3>${item.subtitulo}</h3>
-                            <p>${item.conteudo}</p>
+                            ${conteudoHTML}
                         </div>
                     `;
                     if (index % 2 === 0) {
