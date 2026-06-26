@@ -133,13 +133,9 @@
                         if (!grupos[subtitulo]) {
                             grupos[subtitulo] = [];
                         }
-                        // Divide por quebra de linha e adiciona cada linha como um item
-                        const linhasConteudo = conteudo.split('\n');
-                        for (let linha of linhasConteudo) {
-                            if (linha.trim() !== '') {
-                                grupos[subtitulo].push(linha.trim());
-                            }
-                        }
+                        if (conteudo.trim() !== ") {
+                            grupos[subtitulo].push(conteudo);
+                    }
                     }
                 }
 
