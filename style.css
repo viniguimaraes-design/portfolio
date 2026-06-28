@@ -515,7 +515,7 @@ body {
 }
 
 .about-item p a i {
-    font-size: 0.8rem;
+    font-size: 0.6rem;
     opacity: 1;
     margin-left: 0.15rem;
     transition: opacity 0.2s;
