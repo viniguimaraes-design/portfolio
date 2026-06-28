@@ -519,6 +519,7 @@ body {
     font-size: 0.6rem;
     opacity: 1;
     margin-left: 0.15rem;
+    vertical-align: middle;        /* ← ALINHA COM O MEIO DO TEXTO */
     transition: opacity 0.2s;
 }
 
