@@ -517,7 +517,8 @@ body {
 /* Adiciona a setinha automaticamente depois do link */
 .about-item p a::after {
     content: " ↗";
-    font-size: 0.7rem;
+    font-size: 1.2rem;
+    font-weight: 700;
     opacity: 0.5;
     transition: opacity 0.2s;
 }
