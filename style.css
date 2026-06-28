@@ -509,9 +509,9 @@ body {
 .about-item p a {
     text-decoration: none;
     color: inherit;
-    padding: 0.1rem 0.4rem;        /* ← MAIS ESPAÇO PARA O FUNDO APARECER */
-    border-radius: 4px;
-    background-color: #f0f0f0;      /* ← CINZA CLARINHO (SEMPRE) */
+    padding: 0.05rem 0.3rem;        /* ← MAIS FINO (menos espaço) */
+    border-radius: 3px;
+    background-color: #f7f7f7;      /* ← MAIS CLARO (quase branco) */
     transition: background-color 0.2s ease;
 }
 
@@ -524,7 +524,7 @@ body {
 
 /* HOVER: muda para azul translúcido */
 .about-item p a:hover {
-    background-color: rgba(66, 133, 244, 0.2);  /* ← AZUL QUE VOCÊ GOSTOU */
+    background-color: rgba(66, 133, 244, 0.2);
 }
 
 .about-item p a:hover i {
