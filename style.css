@@ -509,7 +509,7 @@ body {
 .about-item p a {
     text-decoration: none;
     color: inherit;
-    padding: 0.05rem 0.3rem;        /* ← MAIS FINO (menos espaço) */
+    padding: 0.02rem 0.2rem;        /* ← MAIS FINO (menos espaço) */
     border-radius: 3px;
     background-color: #f7f7f7;      /* ← MAIS CLARO (quase branco) */
     transition: background-color 0.2s ease;
