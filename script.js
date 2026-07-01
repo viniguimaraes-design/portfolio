@@ -36,7 +36,7 @@ document.addEventListener('keydown', (e) => {
 });
 
 // ===== CARREGAR PROJETOS DO GOOGLE SHEETS =====
-const URL_PLANILHA_PROJETOS = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRY-iRbNiuud4l3m93tk2I4wK4OgWj55HaXimi5x-gSNUCQMbZnV7RBhHfPbJsgYZlVTvJiGzcw_FeM/pub?gid=1415118680&single=true&output=csv';
+const URL_PLANILHA_PROJETOS = 'https://raw.githubusercontent.com/viniguimaraes-design/portfolio/refs/heads/main/assets/portfolio.csv';
 
 let todosProjetos = [];
 
