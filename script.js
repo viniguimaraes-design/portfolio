@@ -35,123 +35,149 @@ document.addEventListener('keydown', (e) => {
     }
 });
 
-// ===== PROJETOS =====
-const projectsData = [{
-    id: 1,
-    title: "Ecoleta App",
-    description: "Aplicativo para conectar pessoas a pontos de coleta de resíduos recicláveis. Inclui mapa interativo, rota de navegação e gamificação.",
-    tags: ["React Native", "Firebase", "Mapbox"],
-    images: [
-        "https://picsum.photos/id/1015/600/400",
-        "https://picsum.photos/id/1016/600/400",
-        "https://picsum.photos/id/1018/600/400",
-        "https://picsum.photos/id/1020/600/400"
-    ]
-}, {
-    id: 2,
-    title: "Dashboard Financeiro",
-    description: "Painel analítico para gestão de finanças pessoais com gráficos dinâmicos, categorização automática de gastos e previsão de orçamento.",
-    tags: ["Vue.js", "D3.js", "Node.js", "MongoDB"],
-    images: [
-        "https://picsum.photos/id/1025/600/400",
-        "https://picsum.photos/id/1026/600/400",
-        "https://picsum.photos/id/1027/600/400",
-        "https://picsum.photos/id/1028/600/400"
-    ]
-}, {
-    id: 3,
-    title: "Plataforma de Cursos Online",
-    description: "Ambiente educacional com videoaulas, sistema de quizzes, certificados e fórum de dúvidas. Suporte para lives e chat em tempo real.",
-    tags: ["Next.js", "Tailwind", "Prisma", "WebRTC"],
-    images: [
-        "https://picsum.photos/id/1029/600/400",
-        "https://picsum.photos/id/1030/600/400",
-        "https://picsum.photos/id/1031/600/400",
-        "https://picsum.photos/id/1032/600/400"
-    ]
-}, {
-    id: 4,
-    title: "App de Delivery",
-    description: "Sistema completo para delivery com rastreamento em tempo real, pagamentos integrados e avaliação de entregadores.",
-    tags: ["React", "Node.js", "Stripe", "Socket.io"],
-    images: [
-        "https://picsum.photos/id/1035/600/400",
-        "https://picsum.photos/id/1036/600/400",
-        "https://picsum.photos/id/1037/600/400",
-        "https://picsum.photos/id/1038/600/400"
-    ]
-}];
+// ===== CARREGAR PROJETOS DO GOOGLE SHEETS =====
+const URL_PLANILHA_PROJETOS = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRY-iRbNiuud4l3m93tk2I4wK4OgWj55HaXimi5x-gSNUCQMbZnV7RBhHfPbJsgYZlVTvJiGzcw_FeM/pub?gid=1415118680&single=true&output=csv';
 
-const grid = document.getElementById('projectsGrid');
+let todosProjetos = [];
 
-function renderProjects() {
+async function carregarProjetos() {
+    try {
+        const response = await fetch(URL_PLANILHA_PROJETOS);
+        const csv = await response.text();
+
+        // Converte CSV em array
+        const linhas = csv.split('\n').filter(linha => linha.trim() !== '');
+        const cabecalho = linhas[0].split(',').map(item => item.trim().toLowerCase());
+        
+        const idxTitulo = cabecalho.indexOf('titulo');
+        const idxDescricao = cabecalho.indexOf('descricao');
+        const idxTags = cabecalho.indexOf('tags');
+        const idxImagens = cabecalho.indexOf('imagens');
+
+        todosProjetos = [];
+
+        for (let i = 1; i < linhas.length; i++) {
+            // Parser respeitando aspas
+            const campos = [];
+            let campoAtual = '';
+            let dentroAspas = false;
+
+            for (let char of linhas[i]) {
+                if (char === '"') {
+                    dentroAspas = !dentroAspas;
+                } else if (char === ',' && !dentroAspas) {
+                    campos.push(campoAtual.trim());
+                    campoAtual = '';
+                } else {
+                    campoAtual += char;
+                }
+            }
+            campos.push(campoAtual.trim());
+
+            const titulo = (campos[idxTitulo] || '').replace(/^"|"$/g, '').trim();
+            const descricao = (campos[idxDescricao] || '').replace(/^"|"$/g, '').trim();
+            const tags = (campos[idxTags] || '').replace(/^"|"$/g, '').split(',').map(t => t.trim()).filter(t => t !== '');
+            const imagens = (campos[idxImagens] || '').replace(/^"|"$/g, '').split(',').map(i => i.trim());
+
+            if (titulo) {
+                todosProjetos.push({ titulo, descricao, tags, imagens });
+            }
+        }
+
+        renderizarProjetos(todosProjetos);
+
+    } catch (error) {
+        console.error('Erro ao carregar projetos:', error);
+        document.getElementById('projectsGrid').innerHTML = '<p>Erro ao carregar projetos. Verifique a planilha.</p>';
+    }
+}
+
+function renderizarProjetos(projetos) {
+    const grid = document.getElementById('projectsGrid');
     grid.innerHTML = '';
-    projectsData.forEach(project => {
+
+    projetos.forEach((projeto, index) => {
         const card = document.createElement('div');
         card.className = 'project-card';
 
-        // Carrossel
+        // ===== CARROSSEL =====
         const wrapper = document.createElement('div');
         wrapper.className = 'carousel-wrapper';
 
         const track = document.createElement('div');
         track.className = 'carousel-track';
 
-        project.images.forEach((src, index) => {
+        projeto.imagens.forEach((src, imgIndex) => {
             const img = document.createElement('img');
             img.src = src;
-            img.alt = project.title;
+            img.alt = projeto.titulo;
             img.loading = 'lazy';
-            img.dataset.index = index;
+            img.dataset.index = imgIndex;
             track.appendChild(img);
         });
 
         wrapper.appendChild(track);
 
-        if (project.images.length > 1) {
+        // Botões de navegação (se houver mais de 1 imagem)
+        if (projeto.imagens.length > 1) {
             const btnPrev = document.createElement('button');
             btnPrev.className = 'carousel-btn prev';
-            btnPrev.innerHTML = '‹';  // ← AGORA É UM CARACTERE
+            btnPrev.innerHTML = '‹';
             
             const btnNext = document.createElement('button');
             btnNext.className = 'carousel-btn next';
-            btnNext.innerHTML = '›';  // ← AGORA É UM CARACTERE
+            btnNext.innerHTML = '›';
             
             wrapper.appendChild(btnPrev);
             wrapper.appendChild(btnNext);
+
+            // Dots
+            const dots = document.createElement('div');
+            dots.className = 'carousel-dots';
+            projeto.imagens.forEach((_, i) => {
+                const dot = document.createElement('span');
+                if (i === 0) dot.classList.add('active');
+                dot.dataset.index = i;
+                dots.appendChild(dot);
+            });
+            wrapper.appendChild(dots);
         }
 
+        // ===== HEADER =====
         const header = document.createElement('div');
         header.className = 'project-header';
         const title = document.createElement('h2');
-        title.textContent = project.title;
+        title.textContent = projeto.titulo;
         const icon = document.createElement('i');
         icon.className = 'fas fa-plus';
         header.appendChild(title);
         header.appendChild(icon);
 
+        // ===== DETALHES =====
         const details = document.createElement('div');
         details.className = 'project-details';
         const desc = document.createElement('p');
-        desc.textContent = project.description;
+        desc.textContent = projeto.descricao;
         details.appendChild(desc);
 
         const tagsDiv = document.createElement('div');
         tagsDiv.className = 'tags';
-        project.tags.forEach(tag => {
+        projeto.tags.forEach(tag => {
             const span = document.createElement('span');
             span.textContent = tag;
             tagsDiv.appendChild(span);
         });
         details.appendChild(tagsDiv);
 
+        // ===== MONTAGEM =====
         card.appendChild(wrapper);
         card.appendChild(header);
         card.appendChild(details);
         grid.appendChild(card);
 
+        // ===== LÓGICA DO CARROSSEL =====
         let currentIndex = 0;
-        const totalImages = project.images.length;
+        const totalImages = projeto.imagens.length;
         
         if (totalImages > 1) {
             const prevBtn = wrapper.querySelector('.prev');
@@ -188,20 +214,21 @@ function renderProjects() {
             });
         }
 
+        // ===== EXPANDIR/RECOLHER =====
         let isOpen = false;
         header.addEventListener('click', () => {
-         isOpen = !isOpen;
-         details.classList.toggle('open', isOpen);
-         icon.className = isOpen ? 'fas fa-minus' : 'fas fa-plus';
+            isOpen = !isOpen;
+            details.classList.toggle('open', isOpen);
+            icon.className = isOpen ? 'fas fa-minus' : 'fas fa-plus';
 
-         if (isOpen) {
-            header.classList.add('open');   // Título fica pesado
-         } else {
-            header.classList.remove('open'); // Título volta ao normal
-         }
+            if (isOpen) {
+                header.classList.add('open');
+            } else {
+                header.classList.remove('open');
+            }
         });
+    });
+}
 
-        });
-}     
-
-renderProjects();
+// ===== INICIAR =====
+carregarProjetos();
