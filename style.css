@@ -237,6 +237,7 @@ body {
     height: 100%;
     object-fit: cover;
     flex-shrink: 0;
+    image-rendering: auto;
 }
 
 /* ===== SETAS ===== */
