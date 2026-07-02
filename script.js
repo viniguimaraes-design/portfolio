@@ -109,7 +109,7 @@ function gerarTags() {
     const tagsOrdenadas = Object.keys(contagem).sort((a, b) => contagem[b] - contagem[a]);
 
     // Cria a tag "Todos" e as demais
-    let html = `<span class="tag active" data-tag="todos">Todos</span>`;
+    let html = ``;
     tagsOrdenadas.forEach(tag => {
         html += `<span class="tag" data-tag="${tag}">${tag}</span>`;
     });
