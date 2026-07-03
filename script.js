@@ -83,7 +83,6 @@ async function carregarProjetos() {
             }
         }
 
-        // Gera as tags automaticamente
         gerarTags();
         filtrarProjetos();
 
@@ -97,7 +96,6 @@ async function carregarProjetos() {
 function gerarTags() {
     const tagsBar = document.getElementById('tagsBar');
     
-    // Conta a frequência de cada tag
     const contagem = {};
     todosProjetos.forEach(projeto => {
         projeto.tags.forEach(tag => {
@@ -105,44 +103,37 @@ function gerarTags() {
         });
     });
 
-    // Ordena as tags por frequência (da mais comum para a menos comum)
     const tagsOrdenadas = Object.keys(contagem).sort((a, b) => contagem[b] - contagem[a]);
 
-    // Cria a tag "Todos" e as demais
-    let html = ``;
+    let html = `<span class="tag active" data-tag="todos">Todos</span>`;
     tagsOrdenadas.forEach(tag => {
         html += `<span class="tag" data-tag="${tag}">${tag}</span>`;
     });
     tagsBar.innerHTML = html;
 
-    // Configura os eventos de clique
     const tags = document.querySelectorAll('.tag');
     tags.forEach(tag => {
-        tag.addEventListener('click', () => {
-            const tagNome = tag.dataset.tag;
+        tag.addEventListener('click', function(e) {
+            const tagNome = this.dataset.tag;
             
             if (tagNome === 'todos') {
-                // Limpa todas as tags e ativa apenas "Todos"
                 tags.forEach(t => t.classList.remove('active'));
-                tag.classList.add('active');
+                this.classList.add('active');
                 tagsAtivas = ['todos'];
             } else {
-                // Remove "Todos" se estiver ativo
                 if (tagsAtivas.includes('todos')) {
                     tagsAtivas = [];
                     document.querySelector('.tag[data-tag="todos"]').classList.remove('active');
                 }
                 
-                // Alterna a tag clicada
-                if (tag.classList.contains('active')) {
-                    tag.classList.remove('active');
+                if (this.classList.contains('active')) {
+                    this.classList.remove('active');
                     tagsAtivas = tagsAtivas.filter(t => t !== tagNome);
                 } else {
-                    tag.classList.add('active');
+                    this.classList.add('active');
                     tagsAtivas.push(tagNome);
                 }
                 
-                // Se não houver tags ativas, volta para "Todos"
                 if (tagsAtivas.length === 0) {
                     tagsAtivas = ['todos'];
                     document.querySelector('.tag[data-tag="todos"]').classList.add('active');
@@ -158,13 +149,11 @@ function gerarTags() {
 function filtrarProjetos() {
     const grid = document.getElementById('projectsGrid');
     
-    // Se "todos" estiver ativo, mostra todos
     if (tagsAtivas.includes('todos')) {
         renderizarProjetos(todosProjetos);
         return;
     }
     
-    // Filtra projetos que tenham pelo menos uma das tags ativas
     const projetosFiltrados = todosProjetos.filter(projeto => {
         return projeto.tags.some(tag => tagsAtivas.includes(tag));
     });
@@ -186,7 +175,6 @@ function renderizarProjetos(projetos) {
         const card = document.createElement('div');
         card.className = 'project-card';
 
-        // Carrossel
         const wrapper = document.createElement('div');
         wrapper.className = 'carousel-wrapper';
         const track = document.createElement('div');
@@ -216,7 +204,6 @@ function renderizarProjetos(projetos) {
             wrapper.appendChild(btnNext);
         }
 
-        // Header
         const header = document.createElement('div');
         header.className = 'project-header';
         const title = document.createElement('h2');
@@ -226,7 +213,6 @@ function renderizarProjetos(projetos) {
         header.appendChild(title);
         header.appendChild(icon);
 
-        // Detalhes
         const details = document.createElement('div');
         details.className = 'project-details';
         const desc = document.createElement('p');
@@ -247,7 +233,6 @@ function renderizarProjetos(projetos) {
         card.appendChild(details);
         grid.appendChild(card);
 
-        // Lógica do carrossel
         let currentIndex = 0;
         const totalImages = projeto.imagens.length;
         
@@ -294,7 +279,6 @@ function renderizarProjetos(projetos) {
             });
         }
 
-        // Expandir/recolher
         let isOpen = false;
         header.addEventListener('click', () => {
             isOpen = !isOpen;
