@@ -105,7 +105,7 @@ function gerarTags() {
 
     const tagsOrdenadas = Object.keys(contagem).sort((a, b) => contagem[b] - contagem[a]);
 
-    let html = `<span class="tag active" data-tag="todos">Todos</span>`;
+    let html = '';
     tagsOrdenadas.forEach(tag => {
         html += `<span class="tag" data-tag="${tag}">${tag}</span>`;
     });
@@ -116,31 +116,21 @@ function gerarTags() {
         tag.addEventListener('click', function(e) {
             const tagNome = this.dataset.tag;
             
-            if (tagNome === 'todos') {
-                tags.forEach(t => t.classList.remove('active'));
-                this.classList.add('active');
-                tagsAtivas = ['todos'];
+            // Alterna a tag clicada
+            if (this.classList.contains('active')) {
+                this.classList.remove('active');
+                tagsAtivas = tagsAtivas.filter(t => t !== tagNome);
             } else {
-                if (tagsAtivas.includes('todos')) {
-                    tagsAtivas = [];
-                    document.querySelector('.tag[data-tag="todos"]').classList.remove('active');
-                }
-                
-                if (this.classList.contains('active')) {
-                    this.classList.remove('active');
-                    tagsAtivas = tagsAtivas.filter(t => t !== tagNome);
-                } else {
-                    this.classList.add('active');
-                    tagsAtivas.push(tagNome);
-                }
-                
-                if (tagsAtivas.length === 0) {
-                    tagsAtivas = ['todos'];
-                    document.querySelector('.tag[data-tag="todos"]').classList.add('active');
-                }
+                this.classList.add('active');
+                tagsAtivas.push(tagNome);
             }
             
-            filtrarProjetos();
+            // Se não houver tags ativas, mostra todos os projetos
+            if (tagsAtivas.length === 0) {
+                renderizarProjetos(todosProjetos);
+            } else {
+                filtrarProjetos();
+            }
         });
     });
 }
