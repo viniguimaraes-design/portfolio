@@ -93,6 +93,7 @@ async function carregarProjetos() {
 }
 
 // ===== GERAR TAGS AUTOMATICAMENTE =====
+
 function gerarTags() {
     const tagsBar = document.getElementById('tagsBar');
     
@@ -134,6 +135,7 @@ function gerarTags() {
         });
     });
 }
+    
 
 // ===== FILTRAR PROJETOS =====
 function filtrarProjetos() {
