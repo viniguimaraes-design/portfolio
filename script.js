@@ -293,19 +293,16 @@ document.addEventListener('DOMContentLoaded', function() {
     let timeoutId = null;
 
     wrapper.addEventListener('click', function() {
-        // 1. Botão fica azul (classe .copied)
         wrapper.classList.add('copied');
 
         navigator.clipboard.writeText(email).then(() => {
-            // 2. "copiado!" aparece fora do retângulo
             feedback.textContent = 'copiado!';
             if (timeoutId) clearTimeout(timeoutId);
             timeoutId = setTimeout(() => {
-                feedback.textContent = '';       // some o "copiado!"
-                wrapper.classList.remove('copied'); // volta ao cinza
+                feedback.textContent = '';
+                wrapper.classList.remove('copied');
             }, 3000);
         }).catch(() => {
-            // Fallback para navegadores antigos
             const textarea = document.createElement('textarea');
             textarea.value = email;
             document.body.appendChild(textarea);
@@ -321,4 +318,3 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
-}
