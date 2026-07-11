@@ -374,19 +374,29 @@ body {
 
 /* ===== EMAIL COM COPY ===== */
 /* ===== EMAIL COM COPY ===== */
-.contact-email-wrapper {
+.contact-email-row {
     display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.contact-email-wrapper {
+    display: inline-flex;
     align-items: center;
     gap: 0.4rem;
     background-color: #f7f7f7;
     padding: 0.02rem 0.4rem;
     border-radius: 3px;
-    width: fit-content;
     cursor: pointer;
     transition: background-color 0.2s ease;
+    width: auto;
 }
 
 .contact-email-wrapper:hover {
+    background-color: rgba(66, 133, 244, 0.2);
+}
+
+.contact-email-wrapper.copied {
     background-color: rgba(66, 133, 244, 0.2);
 }
 
@@ -394,13 +404,13 @@ body {
     font-size: 0.95rem;
     color: #222;
     user-select: all;
+    white-space: nowrap;
 }
 
 .copy-icon {
-    font-size: 0.6rem;
+    font-size: 0.7rem;
     color: #666;
     vertical-align: middle;
-    transform: translateY(-1px);
     transition: color 0.2s;
 }
 
@@ -415,7 +425,7 @@ body {
     min-width: 3.5rem;
 }
 
-.contact-email-wrapper:hover .copy-feedback {
+.contact-email-wrapper:hover + .copy-feedback {
     color: #000;
 }
 
@@ -427,9 +437,11 @@ body {
 }
 
 .contact-social-label {
-    font-size: 0.85rem;
-    color: #888;
-    font-weight: 400;
+    font-size: 1.2rem;
+    font-weight: 300;
+    line-height: 1.6;
+    color: #222;
+    margin: 0;
 }
 
 .contact-social {
