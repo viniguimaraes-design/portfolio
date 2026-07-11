@@ -93,7 +93,6 @@ async function carregarProjetos() {
 }
 
 // ===== GERAR TAGS AUTOMATICAMENTE =====
-
 function gerarTags() {
     const tagsBar = document.getElementById('tagsBar');
     
@@ -117,7 +116,6 @@ function gerarTags() {
         tag.addEventListener('click', function(e) {
             const tagNome = this.dataset.tag;
             
-            // Alterna a tag clicada
             if (this.classList.contains('active')) {
                 this.classList.remove('active');
                 tagsAtivas = tagsAtivas.filter(t => t !== tagNome);
@@ -126,7 +124,6 @@ function gerarTags() {
                 tagsAtivas.push(tagNome);
             }
             
-            // Se não houver tags ativas, mostra todos os projetos
             if (tagsAtivas.length === 0) {
                 renderizarProjetos(todosProjetos);
             } else {
@@ -135,7 +132,6 @@ function gerarTags() {
         });
     });
 }
-    
 
 // ===== FILTRAR PROJETOS =====
 function filtrarProjetos() {
@@ -288,3 +284,35 @@ function renderizarProjetos(projetos) {
 
 // ===== INICIAR =====
 carregarProjetos();
+
+// ===== COPY EMAIL (apenas na página Contato) =====
+if (document.getElementById('emailWrapper')) {
+    document.addEventListener('DOMContentLoaded', function() {
+        const wrapper = document.getElementById('emailWrapper');
+        const feedback = document.getElementById('copyFeedback');
+        const email = 'viniguimaraes@terra.com.br';
+        let timeoutId = null;
+
+        wrapper.addEventListener('click', function() {
+            navigator.clipboard.writeText(email).then(() => {
+                feedback.textContent = 'copiado!';
+                if (timeoutId) clearTimeout(timeoutId);
+                timeoutId = setTimeout(() => {
+                    feedback.textContent = '';
+                }, 3000);
+            }).catch(() => {
+                const textarea = document.createElement('textarea');
+                textarea.value = email;
+                document.body.appendChild(textarea);
+                textarea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textarea);
+                feedback.textContent = 'copiado!';
+                if (timeoutId) clearTimeout(timeoutId);
+                timeoutId = setTimeout(() => {
+                    feedback.textContent = '';
+                }, 3000);
+            });
+        });
+    });
+}
