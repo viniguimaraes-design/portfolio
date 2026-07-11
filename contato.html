@@ -48,11 +48,11 @@
                 </p>
 
                 <!-- ===== EMAIL COM COPY ===== -->
-<div class="contact-email-wrapper" id="emailWrapper">
-    <span class="contact-email" id="emailDisplay">viniguimaraes@terra.com.br</span>
-    <i class="fa-regular fa-copy copy-icon"></i>
-    <span class="copy-feedback" id="copyFeedback"></span>
-</div>
+                <div class="contact-email-wrapper" id="emailWrapper">
+                    <span class="contact-email" id="emailDisplay">viniguimaraes@terra.com.br</span>
+                    <i class="fa-regular fa-copy copy-icon"></i>
+                    <span class="copy-feedback" id="copyFeedback"></span>
+                </div>
 
                 <!-- ===== REDES SOCIAIS ===== -->
                 <div class="contact-social-wrapper">
@@ -83,17 +83,17 @@
     <script>
         // ===== COPY EMAIL =====
         document.addEventListener('DOMContentLoaded', function() {
-            const copyBtn = document.getElementById('copyBtn');
+            const wrapper = document.getElementById('emailWrapper');
             const feedback = document.getElementById('copyFeedback');
             const email = 'viniguimaraes@terra.com.br';
             let timeoutId = null;
 
-            copyBtn.addEventListener('click', function() {
+            wrapper.addEventListener('click', function() {
                 navigator.clipboard.writeText(email).then(() => {
                     feedback.textContent = 'copiado!';
                     if (timeoutId) clearTimeout(timeoutId);
                     timeoutId = setTimeout(() => {
-                        feedback.textContent = 'copiar';
+                        feedback.textContent = '';
                     }, 3000);
                 }).catch(() => {
                     const textarea = document.createElement('textarea');
@@ -105,7 +105,7 @@
                     feedback.textContent = 'copiado!';
                     if (timeoutId) clearTimeout(timeoutId);
                     timeoutId = setTimeout(() => {
-                        feedback.textContent = 'copiar';
+                        feedback.textContent = '';
                     }, 3000);
                 });
             });
