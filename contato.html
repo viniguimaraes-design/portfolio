@@ -3,24 +3,20 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Meu Portfólio - Trabalhos</title>
-    <meta name="description" content="Portfólio de Vini Guimarães" />
-    
-    <!-- GOOGLE FONTS: CATAMARAN -->
+    <title>Contato — Vini Guimarães</title>
+    <meta name="description" content="Entre em contato para propostas, colaborações ou apenas para trocar uma ideia." />
     <link href="https://fonts.googleapis.com/css2?family=Catamaran:wght@100..900&display=swap" rel="stylesheet" />
-    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.6/css/academicons.min.css" />
     <link rel="stylesheet" href="style.css" />
 </head>
-    <body>
+<body>
     <div class="container">
-        <!-- ===== HEADER ===== -->
+        <!-- HEADER -->
         <header class="header">
             <a href="index.html" class="logo">
                 <span class="logo-text">Vini Guimarães</span>
             </a>
-            
-            <!-- Menu Desktop -->
             <nav class="desktop-menu">
                 <ul>
                     <li><a href="index.html">Trabalhos</a></li>
@@ -28,14 +24,12 @@
                     <li><a href="contato.html" class="active">Contatos</a></li>
                 </ul>
             </nav>
-
-            <!-- Botão Hambúrguer (Mobile) -->
             <button class="menu-toggle" id="menuToggle">
                 <i class="fas fa-bars"></i>
             </button>
         </header>
 
-        <!-- ===== MENU MOBILE ===== -->
+        <!-- MENU MOBILE -->
         <div class="menu-overlay" id="menuOverlay">
             <nav class="fullscreen-menu">
                 <ul>
@@ -43,50 +37,39 @@
                     <li><a href="sobre.html">Sobre</a></li>
                     <li><a href="contato.html" class="active">Contatos</a></li>
                 </ul>
-                <div class="social-links">
-                    <a href="#"><i class="fab fa-github"></i></a>
-                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                </div>
             </nav>
         </div>
 
         <!-- ===== CONTEÚDO CONTATO ===== -->
-        <div class="page-content">
-            <div class="contact-grid">
-                <div class="contact-info">
-                    <p>Quer conversar sobre um projeto, parceria ou apenas trocar uma ideia? Fique à vontade para me chamar!</p>
-                    
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <span>vini@email.com</span>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-phone"></i>
-                        <span>(00) 99999-9999</span>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <span>São Paulo, Brasil</span>
-                    </div>
-                    
-                    <div class="social-links-large">
-                        <a href="#"><i class="fab fa-github"></i> GitHub</a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i> LinkedIn</a>
-                        <a href="#"><i class="fab fa-instagram"></i> Instagram</a>
-                    </div>
+        <section class="contact-page">
+            <div class="contact-content">
+                <p class="contact-text">
+                    Entre em contato para propostas, colaborações ou apenas para trocar uma ideia.
+                </p>
+
+                <div class="contact-email">
+                    <a href="mailto:viniguimaraes@terra.com.br">viniguimaraes@terra.com.br</a>
                 </div>
-                
-                <!-- Formulário (demonstrativo) -->
-                <form class="contact-form">
-                    <input type="text" placeholder="Seu nome" required />
-                    <input type="email" placeholder="Seu e-mail" required />
-                    <textarea rows="5" placeholder="Sua mensagem" required></textarea>
-                    <button type="submit">Enviar mensagem</button>
-                    <p class="form-note"><em>Este formulário é apenas uma demonstração. Para funcionar, você precisa configurar um backend.</em></p>
-                </form>
+
+                <div class="contact-social">
+                    <a href="https://www.behance.net/viniguimaraes" target="_blank" aria-label="Behance">
+                        <i class="fab fa-behance"></i>
+                    </a>
+                    <a href="http://lattes.cnpq.br/7362840394389611" target="_blank" aria-label="Lattes">
+                        <i class="ai ai-lattes"></i>
+                    </a>
+                    <a href="https://github.com/viniguimaraes-design" target="_blank" aria-label="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                </div>
+
+                <div class="contact-location">
+                    <i class="fas fa-map-pin"></i>
+                    <span>Niterói/RJ</span>
+                </div>
             </div>
-        </div>
+        </section>
+
     </div>
 
     <script src="script.js"></script>
