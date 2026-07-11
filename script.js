@@ -293,16 +293,16 @@ document.addEventListener('DOMContentLoaded', function() {
     let timeoutId = null;
 
     wrapper.addEventListener('click', function() {
+        // Impede múltiplos cliques
+        if (wrapper.classList.contains('copied')) return;
+
         wrapper.classList.add('copied');
 
+        // Copia o e-mail
         navigator.clipboard.writeText(email).then(() => {
             feedback.textContent = 'copiado!';
-            if (timeoutId) clearTimeout(timeoutId);
-            timeoutId = setTimeout(() => {
-                feedback.textContent = '';
-                wrapper.classList.remove('copied');
-            }, 3000);
         }).catch(() => {
+            // Fallback para navegadores antigos
             const textarea = document.createElement('textarea');
             textarea.value = email;
             document.body.appendChild(textarea);
@@ -310,11 +310,13 @@ document.addEventListener('DOMContentLoaded', function() {
             document.execCommand('copy');
             document.body.removeChild(textarea);
             feedback.textContent = 'copiado!';
-            if (timeoutId) clearTimeout(timeoutId);
-            timeoutId = setTimeout(() => {
-                feedback.textContent = '';
-                wrapper.classList.remove('copied');
-            }, 3000);
         });
+
+        // Remove a classe e o texto após 3 segundos (sempre)
+        if (timeoutId) clearTimeout(timeoutId);
+        timeoutId = setTimeout(() => {
+            feedback.textContent = '';
+            wrapper.classList.remove('copied');
+        }, 3000);
     });
 });
