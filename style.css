@@ -372,19 +372,70 @@ body {
     margin: 0;
 }
 
+/* ===== EMAIL COM COPY ===== */
+.contact-email-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: #f7f7f7;
+    padding: 0.1rem 0.1rem 0.1rem 0.6rem;
+    border-radius: 3px;
+    width: fit-content;
+}
+
 .contact-email {
-    font-size: 1.1rem;
-}
-
-.contact-email a {
+    font-size: 1rem;
     color: #000;
-    text-decoration: none;
-    border-bottom: 1px solid #ccc;
-    transition: border-color 0.2s;
+    user-select: all;
 }
 
-.contact-email a:hover {
-    border-color: #000;
+.copy-btn {
+    background: transparent;
+    border: none;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.1rem 0.5rem;
+    border-radius: 3px;
+    font-size: 0.8rem;
+    font-family: 'Catamaran', sans-serif;
+    color: #666;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.copy-btn:hover {
+    background-color: rgba(66, 133, 244, 0.2);
+    color: #000;
+}
+
+.copy-btn i {
+    font-size: 0.8rem;
+}
+
+.copy-feedback {
+    font-size: 0.75rem;
+    color: #888;
+    min-width: 3.5rem;
+    text-align: left;
+    transition: color 0.2s;
+}
+
+.copy-btn:hover .copy-feedback {
+    color: #000;
+}
+
+/* ===== REDES SOCIAIS ===== */
+.contact-social-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.contact-social-label {
+    font-size: 0.85rem;
+    color: #888;
+    font-weight: 400;
 }
 
 .contact-social {
@@ -404,6 +455,7 @@ body {
     color: #000;
 }
 
+/* ===== LOCALIZAÇÃO ===== */
 .contact-location {
     display: flex;
     align-items: center;
@@ -557,6 +609,13 @@ body {
     }
     .contact-social a {
         font-size: 1.4rem;
+    }
+    .contact-email-wrapper {
+        flex-wrap: wrap;
+        padding-right: 0.3rem;
+    }
+    .copy-btn {
+        padding: 0.1rem 0.4rem;
     }
 }
 
