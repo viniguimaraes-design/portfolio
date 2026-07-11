@@ -285,34 +285,40 @@ function renderizarProjetos(projetos) {
 // ===== INICIAR =====
 carregarProjetos();
 
-// ===== COPY EMAIL (apenas na página Contato) =====
-if (document.getElementById('emailWrapper')) {
-    document.addEventListener('DOMContentLoaded', function() {
-        const wrapper = document.getElementById('emailWrapper');
-        const feedback = document.getElementById('copyFeedback');
-        const email = 'viniguimaraes@terra.com.br';
-        let timeoutId = null;
+// ===== COPY EMAIL =====
+document.addEventListener('DOMContentLoaded', function() {
+    const wrapper = document.getElementById('emailWrapper');
+    const feedback = document.getElementById('copyFeedback');
+    const email = 'viniguimaraes@terra.com.br';
+    let timeoutId = null;
 
-        wrapper.addEventListener('click', function() {
-            navigator.clipboard.writeText(email).then(() => {
-                feedback.textContent = 'copiado!';
-                if (timeoutId) clearTimeout(timeoutId);
-                timeoutId = setTimeout(() => {
-                    feedback.textContent = '';
-                }, 3000);
-            }).catch(() => {
-                const textarea = document.createElement('textarea');
-                textarea.value = email;
-                document.body.appendChild(textarea);
-                textarea.select();
-                document.execCommand('copy');
-                document.body.removeChild(textarea);
-                feedback.textContent = 'copiado!';
-                if (timeoutId) clearTimeout(timeoutId);
-                timeoutId = setTimeout(() => {
-                    feedback.textContent = '';
-                }, 3000);
-            });
+    wrapper.addEventListener('click', function() {
+        // 1. Botão fica azul (classe .copied)
+        wrapper.classList.add('copied');
+
+        navigator.clipboard.writeText(email).then(() => {
+            // 2. "copiado!" aparece fora do retângulo
+            feedback.textContent = 'copiado!';
+            if (timeoutId) clearTimeout(timeoutId);
+            timeoutId = setTimeout(() => {
+                feedback.textContent = '';       // some o "copiado!"
+                wrapper.classList.remove('copied'); // volta ao cinza
+            }, 3000);
+        }).catch(() => {
+            // Fallback para navegadores antigos
+            const textarea = document.createElement('textarea');
+            textarea.value = email;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+            feedback.textContent = 'copiado!';
+            if (timeoutId) clearTimeout(timeoutId);
+            timeoutId = setTimeout(() => {
+                feedback.textContent = '';
+                wrapper.classList.remove('copied');
+            }, 3000);
         });
     });
+});
 }
