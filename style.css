@@ -261,7 +261,7 @@ body {
     color: #999;
     text-decoration: none;
     letter-spacing: 0.5px;
-    text-transform: none !important;
+    text-transform: lowercase !important;
     transition: color 0.2s, font-variation-settings 0.2s;
 }
 
