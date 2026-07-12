@@ -270,7 +270,7 @@ body {
 }
 
 .menu-speciais li:first-child a {
-    padding-top: 2rem;
+    margin-top: 2rem;
 }
 
 /* ===== GRID DE PROJETOS ===== */
