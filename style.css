@@ -378,7 +378,7 @@ body {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    margin-top: 0.5rem;
+    margin-top: 0.1rem;
 }
 
 .contact-email-wrapper {
