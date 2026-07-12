@@ -404,7 +404,6 @@ body {
 .contact-email {
     font-size: 0.95rem;
     color: #222;
-    user-select: all;
     white-space: nowrap;
 }
 
