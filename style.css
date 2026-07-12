@@ -685,7 +685,7 @@ body {
 }
 
 .desktop-menu ul li .dropdown-menu li a {
-    font-size: 0.85rem;
+    font-size: 0.3rem;
     font-weight: 400;
     font-variation-settings: 'wght' 400;
     color: #000;
