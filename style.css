@@ -360,7 +360,8 @@ body {
 .contact-content {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 1rem;
+    padding-left: 1rem;
 }
 
 .contact-text {
@@ -373,11 +374,11 @@ body {
 }
 
 /* ===== EMAIL COM COPY ===== */
-/* ===== EMAIL COM COPY ===== */
 .contact-email-row {
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    margin-top: 0.2rem;
 }
 
 .contact-email-wrapper {
@@ -433,15 +434,7 @@ body {
 .contact-social-wrapper {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
-}
-
-.contact-social-label {
-    font-size: 1.2rem;
-    font-weight: 300;
-    line-height: 1.6;
-    color: #222;
-    margin: 0;
+    gap: 0.3rem;
 }
 
 .contact-social {
