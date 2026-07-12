@@ -372,12 +372,13 @@ body {
     margin: 0;
 }
 
-/* ===== EMAIL COM COPY ===== */
+
 /* ===== EMAIL COM COPY ===== */
 .contact-email-row {
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    margin-top: 1.2rem;
 }
 
 .contact-email-wrapper {
