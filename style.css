@@ -269,6 +269,10 @@ body {
     font-variation-settings: 'wght' 500;
 }
 
+.menu-speciais li:first-child a {
+    padding-top: 2rem;
+}
+
 /* ===== GRID DE PROJETOS ===== */
 .projects-grid {
     display: grid;
