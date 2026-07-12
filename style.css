@@ -391,6 +391,7 @@ body {
     cursor: pointer;
     transition: background-color 0.2s ease;
     width: auto;
+    user-select: none;
 }
 
 .contact-email-wrapper:hover {
