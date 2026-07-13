@@ -288,6 +288,9 @@ carregarProjetos();
 // ===== COPY EMAIL =====
 document.addEventListener('DOMContentLoaded', function() {
     const wrapper = document.getElementById('emailWrapper');
+    // Se o elemento não existir (ex: página inicial), sai da função
+    if (!wrapper) return;
+
     const feedback = document.getElementById('copyFeedback');
     const email = 'viniguimaraes@terra.com.br';
     let timeoutId = null;
@@ -298,11 +301,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
         wrapper.classList.add('copied');
 
-        // Copia o e-mail
         navigator.clipboard.writeText(email).then(() => {
             feedback.textContent = 'copiado!';
         }).catch(() => {
-            // Fallback para navegadores antigos
             const textarea = document.createElement('textarea');
             textarea.value = email;
             document.body.appendChild(textarea);
@@ -312,7 +313,6 @@ document.addEventListener('DOMContentLoaded', function() {
             feedback.textContent = 'copiado!';
         });
 
-        // Remove a classe e o texto após 3 segundos (sempre)
         if (timeoutId) clearTimeout(timeoutId);
         timeoutId = setTimeout(() => {
             feedback.textContent = '';
