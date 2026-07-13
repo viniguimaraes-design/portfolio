@@ -141,7 +141,6 @@ body {
 .desktop-menu ul li a .ellipsis-icon {
     font-size: 2.5rem;
     font-weight: 300;
-    vertical-align: middle;
     line-height: 1;
     display: inline-block;
     transform: translateY(-8px); /* ← AJUSTE FINO PARA SUBIR */
