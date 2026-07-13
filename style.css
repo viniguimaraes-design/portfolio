@@ -143,7 +143,8 @@ body {
     font-weight: 300 !important;
     line-height: 1 !important;
     display: inline-block !important;
-    margin-top: -10px !important; /* ← SOBE O ÍCONE */
+    position: relative !important;
+    top: -8px !important;   /* ← Ajuste este valor para subir (+) ou descer (-) */
 }
 
 .desktop-menu ul li a:hover i.fa-ellipsis-h {
