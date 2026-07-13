@@ -132,9 +132,9 @@ body {
 }
 
 .desktop-menu ul li .dropdown-menu li a:hover {
-    background-color: #f5f5f5;
-    font-variation-settings: 'wght' 500;
-    color: #000;
+    background-color: transparent;
+    font-variation-settings: 'wght' 400; /* ← MANTÉM O PESO */
+    color: rgba(66, 133, 244, 1); /* ← AZUL */
 }
 
 /* ===== ÍCONE DE ELIPSES NO MENU ===== */
