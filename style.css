@@ -103,8 +103,8 @@ body {
     display: none;
     position: absolute;
     top: 100%;
-    left: 50%;
-    transform: translateX(-50%);
+    left: 0%;
+    transform: translateX(0%);
     background: #ffffff;
     box-shadow: 0 4px 12px rgba(0,0,0,0.08);
     padding: 0.3rem 0;
