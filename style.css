@@ -143,7 +143,7 @@ body {
     font-weight: 300;
     line-height: 1;
     display: inline-block;
-    transform: translateY(-8px); /* ← AJUSTE FINO PARA SUBIR */
+    transform: translateY(-8px) !important; /* ← AJUSTE FINO PARA SUBIR */
 }
 
 .desktop-menu ul li a:hover i.fa-ellipsis-h {
