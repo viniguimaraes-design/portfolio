@@ -138,13 +138,13 @@ body {
 }
 
 /* ===== ÍCONE DE ELIPSES NO MENU ===== */
-.desktop-menu ul li a i.fa-ellipsis-h {
+.desktop-menu ul li a .ellipsis-icon {
     font-size: 1.8rem;
-    font-weight: 400;
-    font-variation-settings: 'wght' 400;
-    transition: font-variation-settings 0.3s ease, opacity 0.2s;
+    font-weight: 300;
     vertical-align: middle;
     line-height: 1;
+    display: inline-block;
+    transform: translateY(-2px); /* ← AJUSTE FINO PARA SUBIR */
 }
 
 .desktop-menu ul li a:hover i.fa-ellipsis-h {
