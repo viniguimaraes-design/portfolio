@@ -128,13 +128,17 @@ body {
     text-decoration: none;
     letter-spacing: 0.5px;
     text-transform: none;
-    transition: background-color 0.2s, font-variation-settings 0.2s;
+    transition: background-color 0.2s, color 0.2s; /* ← SÓ BACKGROUND E COR */
 }
 
 .desktop-menu ul li .dropdown-menu li a:hover {
-    background-color: rgba(66, 133, 244, 0.2); /* ← AZUL TRANSLÚCIDO */
-    font-variation-settings: 'wght' 400; /* ← MANTÉM O PESO */
+    background-color: rgba(66, 133, 244, 0.2);
+    font-variation-settings: 'wght' 400;
     color: #000;
+    padding: 0.2rem 1.2rem; /* ← MANTÉM O PADDING EXATAMENTE IGUAL AO NORMAL */
+    margin: 0;
+    transform: none;
+    letter-spacing: 0.5px;
 }
 
 /* ===== ÍCONE DE ELIPSES NO MENU ===== */
