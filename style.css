@@ -955,8 +955,8 @@ body {
     display: none;
     flex-direction: column;
     align-items: center;
-    gap: 0.8rem;
-    padding: 1rem 0 0.5rem 0;
+    gap: 0.5rem; /* ← ESPAÇO ENTRE E-MAIL E ÍCONES */
+    padding: 0.8rem 0 0.3rem 0;
     width: 100%;
 }
 
@@ -964,7 +964,7 @@ body {
     display: flex;
 }
 
-/* E-mail no mobile */
+/* ===== E-MAIL CENTRALIZADO ===== */
 .menu-contato-email {
     width: 100%;
     display: flex;
@@ -977,6 +977,7 @@ body {
     gap: 0.5rem;
     padding: 0.2rem 0.8rem;
     width: auto;
+    justify-content: center;
 }
 
 .menu-contato-email .contact-email-wrapper {
@@ -1026,17 +1027,17 @@ body {
     background-color: transparent !important;
 }
 
-/* Redes sociais no mobile */
+/* ===== ÍCONES MENORES E MAIS PRÓXIMOS ===== */
 .menu-contato-social {
     display: flex;
-    gap: 1.5rem;
+    gap: 0.8rem; /* ← MENOS ESPAÇO ENTRE OS ÍCONES */
     justify-content: center;
-    padding: 0.5rem 0;
+    padding: 0.2rem 0 0.5rem 0;
 }
 
 .menu-contato-social a {
     color: #888;
-    font-size: 1.8rem;
+    font-size: 1.2rem; /* ← MENOR (antes 1.8rem) */
     transition: color 0.2s;
 }
 
