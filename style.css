@@ -177,6 +177,7 @@ body {
     cursor: pointer;
     transition: background-color 0.2s ease;
     user-select: none;
+    background-color: transparent !important;
 }
 
 .desktop-menu ul li .dropdown-contato .dropdown-email .contact-email-wrapper:hover {
