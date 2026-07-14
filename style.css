@@ -164,10 +164,9 @@ body {
 .desktop-menu ul li .dropdown-contato .dropdown-email .contact-email-row {
     display: flex;
     align-items: center;
-    justify-content: flex-end; /* ← ALINHA TODO O CONTEÚDO À DIREITA */
     gap: 0.5rem;
     padding: 0.2rem 0.8rem;
-    width: 210px;
+    width: 100%; /* ← GARANTE QUE OCUPE TODO O ESPAÇO DO MENU */
 }
 
 /* Container do e-mail no dropdown */
@@ -181,6 +180,8 @@ body {
     transition: background-color 0.2s ease;
     user-select: none;
     background-color: transparent !important;
+    flex: 1; /* ← OCUPA TODO O ESPAÇO DISPONÍVEL */
+    justify-content: flex-end; /* ← ALINHA O CONTEÚDO À DIREITA */
 }
 
 /* Texto do e-mail */
