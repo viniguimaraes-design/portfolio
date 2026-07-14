@@ -356,3 +356,56 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 3000);
     });
 });
+
+// ===== ABRIR/FECHAR SUBMENU CONTATO/REDES NO MOBILE =====
+document.addEventListener('DOMContentLoaded', function() {
+    const toggle = document.querySelector('.menu-contato-toggle');
+    if (!toggle) return;
+
+    toggle.addEventListener('click', function(e) {
+        e.preventDefault();
+        const sub = this.nextElementSibling;
+        sub.classList.toggle('open');
+    });
+});
+
+// ===== COPY EMAIL (mobile) =====
+document.addEventListener('DOMContentLoaded', function() {
+    const wrapper = document.getElementById('emailWrapperMobile');
+    if (!wrapper) return;
+
+    const emailDisplay = document.getElementById('emailDisplayMobile');
+    const copyIcon = wrapper.querySelector('.copy-icon');
+    const feedback = document.getElementById('copyFeedbackMobile');
+    const email = 'viniguimaraes@terra.com.br';
+    let timeoutId = null;
+
+    wrapper.addEventListener('click', function() {
+        if (wrapper.classList.contains('copied')) return;
+
+        wrapper.classList.add('copied');
+        wrapper.style.pointerEvents = 'none';
+        
+        const originalEmail = emailDisplay.textContent;
+        emailDisplay.textContent = 'copiado!';
+        copyIcon.className = 'fas fa-check copy-icon';
+        feedback.textContent = '';
+
+        navigator.clipboard.writeText(email).catch(() => {
+            const textarea = document.createElement('textarea');
+            textarea.value = email;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+        });
+
+        if (timeoutId) clearTimeout(timeoutId);
+        timeoutId = setTimeout(() => {
+            emailDisplay.textContent = originalEmail;
+            copyIcon.className = 'fa-regular fa-copy copy-icon';
+            wrapper.classList.remove('copied');
+            wrapper.style.pointerEvents = '';
+        }, 3000);
+    });
+});
