@@ -152,7 +152,6 @@ body {
 }
 
 /* ===== DROPDOWN CONTATO / REDES ===== */
-/* ===== DROPDOWN CONTATO / REDES ===== */
 .desktop-menu ul li .dropdown-contato {
     width: 210px;
     padding: 0.3rem 0;
@@ -168,7 +167,7 @@ body {
     justify-content: flex-end; /* ← ALINHA TODO O CONTEÚDO À DIREITA */
     gap: 0.5rem;
     padding: 0.2rem 0.8rem;
-    width: 100%;
+    width: 210px;
 }
 
 /* Container do e-mail no dropdown */
