@@ -325,6 +325,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (!wrapper) return;
 
     const feedback = document.getElementById('copyFeedbackDropdown');
+    const emailDisplay = document.getElementById('emailDisplayDropdown');
     const email = 'viniguimaraes@terra.com.br';
     let timeoutId = null;
 
@@ -332,9 +333,12 @@ document.addEventListener('DOMContentLoaded', function() {
         if (wrapper.classList.contains('copied')) return;
 
         wrapper.classList.add('copied');
+        const originalEmail = emailDisplay.textContent;
+        emailDisplay.textContent = 'copiado!';
+        feedback.textContent = ''; // Limpa o feedback ao lado
 
         navigator.clipboard.writeText(email).then(() => {
-            feedback.textContent = 'copiado!';
+            // já está mostrando "copiado!"
         }).catch(() => {
             const textarea = document.createElement('textarea');
             textarea.value = email;
@@ -342,12 +346,11 @@ document.addEventListener('DOMContentLoaded', function() {
             textarea.select();
             document.execCommand('copy');
             document.body.removeChild(textarea);
-            feedback.textContent = 'copiado!';
         });
 
         if (timeoutId) clearTimeout(timeoutId);
         timeoutId = setTimeout(() => {
-            feedback.textContent = '';
+            emailDisplay.textContent = originalEmail;
             wrapper.classList.remove('copied');
         }, 3000);
     });
