@@ -325,7 +325,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (!wrapper) return;
 
     const emailDisplay = document.getElementById('emailDisplayDropdown');
-    const feedback = document.getElementById('copyFeedbackDropdown');
+    const copyIcon = wrapper.querySelector('.copy-icon');
     const email = 'viniguimaraes@terra.com.br';
     let timeoutId = null;
 
@@ -335,9 +335,9 @@ document.addEventListener('DOMContentLoaded', function() {
         wrapper.classList.add('copied');
         const originalEmail = emailDisplay.textContent;
         
-        // Substitui o e-mail por "copiado!"
+        // Substitui o e-mail por "copiado!" e o ícone por check
         emailDisplay.textContent = 'copiado!';
-        feedback.textContent = ''; // Limpa o feedback ao lado
+        copyIcon.className = 'fas fa-check copy-icon';
 
         navigator.clipboard.writeText(email).catch(() => {
             const textarea = document.createElement('textarea');
@@ -351,6 +351,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (timeoutId) clearTimeout(timeoutId);
         timeoutId = setTimeout(() => {
             emailDisplay.textContent = originalEmail;
+            copyIcon.className = 'fa-regular fa-copy copy-icon';
             wrapper.classList.remove('copied');
         }, 3000);
     });
