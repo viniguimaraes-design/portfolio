@@ -357,18 +357,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// ===== ABRIR/FECHAR SUBMENU CONTATO/REDES NO MOBILE =====
-document.addEventListener('DOMContentLoaded', function() {
-    const toggle = document.querySelector('.menu-contato-toggle');
-    if (!toggle) return;
-
-    toggle.addEventListener('click', function(e) {
-        e.preventDefault();
-        const sub = this.nextElementSibling;
-        sub.classList.toggle('open');
-    });
-});
-
 // ===== COPY EMAIL (mobile) =====
 document.addEventListener('DOMContentLoaded', function() {
     const wrapper = document.getElementById('emailWrapperMobile');
