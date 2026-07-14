@@ -206,7 +206,7 @@ body {
 }
 
 .desktop-menu ul li .dropdown-contato .dropdown-email .contact-email-wrapper.copied {
-    
+    background-color: transparent !important;
 }
 
 .desktop-menu ul li .dropdown-contato .dropdown-email .contact-email-wrapper.copied .contact-email {
