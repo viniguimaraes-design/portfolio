@@ -179,12 +179,17 @@ body {
     transition: background-color 0.2s ease;
     user-select: none;
     background-color: transparent !important;
+    width: 100%;
 }
 
-/* Ícone de copiar (empurra para a direita) */
+/* Texto do e-mail (ocupa o espaço) */
+.desktop-menu ul li .dropdown-contato .dropdown-email .contact-email-wrapper .contact-email {
+    flex: 1; /* ← OCUPA TODO O ESPAÇO DISPONÍVEL */
+}
+
+/* Ícone de copiar (fixo à direita) */
 .desktop-menu ul li .dropdown-contato .dropdown-email .contact-email-wrapper .copy-icon {
-    margin-left: auto;
-    flex-shrink: 0;
+    flex-shrink: 0; /* ← IMPEDE O ÍCONE DE ENCOLHER */
 }
 
 .desktop-menu ul li .dropdown-contato .dropdown-email .contact-email-wrapper:hover {
