@@ -209,6 +209,10 @@ body {
     background-color: transparent !important;
 }
 
+.desktop-menu ul li .dropdown-contato .dropdown-email .contact-email-wrapper:active {
+    background-color: transparent !important;
+}
+
 .desktop-menu ul li .dropdown-contato .dropdown-email .contact-email-wrapper.copied .contact-email {
     text-align: right;
     width: 100%;
