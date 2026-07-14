@@ -760,3 +760,103 @@ body {
     font-weight: 600;
     font-variation-settings: 'wght' 600;
 }
+
+/* ===== DROPDOWN CONTATO / REDES ===== */
+.desktop-menu ul li .dropdown-contato {
+    min-width: 240px;
+    padding: 0.5rem 0;
+}
+
+.desktop-menu ul li .dropdown-contato .dropdown-email {
+    padding: 0.2rem 1.2rem;
+}
+
+.desktop-menu ul li .dropdown-contato .dropdown-email .contact-email-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding-left: 0;
+}
+
+.desktop-menu ul li .dropdown-contato .dropdown-email .contact-email-wrapper {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background-color: #f7f7f7;
+    padding: 0.02rem 0.4rem;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    user-select: none;
+}
+
+.desktop-menu ul li .dropdown-contato .dropdown-email .contact-email-wrapper:hover {
+    background-color: rgba(66, 133, 244, 0.2);
+}
+
+.desktop-menu ul li .dropdown-contato .dropdown-email .contact-email-wrapper.copied {
+    background-color: rgba(66, 133, 244, 0.2);
+}
+
+.desktop-menu ul li .dropdown-contato .dropdown-email .contact-email {
+    font-size: 0.85rem;
+    color: #222;
+    white-space: nowrap;
+}
+
+.desktop-menu ul li .dropdown-contato .dropdown-email .copy-icon {
+    font-size: 0.7rem;
+    color: #666;
+    vertical-align: middle;
+    transition: color 0.2s;
+}
+
+.desktop-menu ul li .dropdown-contato .dropdown-email .copy-feedback {
+    font-size: 0.7rem;
+    color: #888;
+    min-width: 3rem;
+    transition: color 0.2s;
+}
+
+.desktop-menu ul li .dropdown-contato .dropdown-email .contact-email-wrapper:hover .copy-feedback {
+    color: #000;
+}
+
+/* ===== REDES SOCIAIS NO DROPDOWN ===== */
+.desktop-menu ul li .dropdown-contato .dropdown-social {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    padding: 0.5rem 1.2rem;
+    border-top: 1px solid #eaeaea;
+    margin-top: 0.3rem;
+    padding-top: 0.8rem;
+}
+
+.desktop-menu ul li .dropdown-contato .dropdown-social a {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    color: #888;
+    font-size: 1.2rem;
+    text-decoration: none;
+    transition: color 0.2s;
+    padding: 0.1rem 0;
+}
+
+.desktop-menu ul li .dropdown-contato .dropdown-social a .social-label {
+    font-size: 0.8rem;
+    font-weight: 300;
+    color: #888;
+    opacity: 0;
+    transition: opacity 0.2s, color 0.2s;
+}
+
+.desktop-menu ul li .dropdown-contato .dropdown-social a:hover {
+    color: rgba(66, 133, 244, 1);
+}
+
+.desktop-menu ul li .dropdown-contato .dropdown-social a:hover .social-label {
+    opacity: 1;
+    color: rgba(66, 133, 244, 1);
+    }
