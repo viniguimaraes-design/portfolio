@@ -285,10 +285,9 @@ function renderizarProjetos(projetos) {
 // ===== INICIAR =====
 carregarProjetos();
 
-// ===== COPY EMAIL =====
+// ===== COPY EMAIL (página contato) =====
 document.addEventListener('DOMContentLoaded', function() {
     const wrapper = document.getElementById('emailWrapper');
-    // Se o elemento não existir (ex: página inicial), sai da função
     if (!wrapper) return;
 
     const feedback = document.getElementById('copyFeedback');
@@ -296,7 +295,40 @@ document.addEventListener('DOMContentLoaded', function() {
     let timeoutId = null;
 
     wrapper.addEventListener('click', function() {
-        // Impede múltiplos cliques
+        if (wrapper.classList.contains('copied')) return;
+
+        wrapper.classList.add('copied');
+
+        navigator.clipboard.writeText(email).then(() => {
+            feedback.textContent = 'copiado!';
+        }).catch(() => {
+            const textarea = document.createElement('textarea');
+            textarea.value = email;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+            feedback.textContent = 'copiado!';
+        });
+
+        if (timeoutId) clearTimeout(timeoutId);
+        timeoutId = setTimeout(() => {
+            feedback.textContent = '';
+            wrapper.classList.remove('copied');
+        }, 3000);
+    });
+});
+
+// ===== COPY EMAIL (dropdown "Contato / Redes") =====
+document.addEventListener('DOMContentLoaded', function() {
+    const wrapper = document.getElementById('emailWrapperDropdown');
+    if (!wrapper) return;
+
+    const feedback = document.getElementById('copyFeedbackDropdown');
+    const email = 'viniguimaraes@terra.com.br';
+    let timeoutId = null;
+
+    wrapper.addEventListener('click', function() {
         if (wrapper.classList.contains('copied')) return;
 
         wrapper.classList.add('copied');
