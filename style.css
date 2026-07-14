@@ -153,7 +153,7 @@ body {
 
 /* ===== DROPDOWN CONTATO / REDES ===== */
 .desktop-menu ul li .dropdown-contato {
-    min-width: 240px;
+    min-width: 220px;
     padding: 0.3rem 0;
 }
 
