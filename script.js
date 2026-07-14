@@ -324,8 +324,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const wrapper = document.getElementById('emailWrapperDropdown');
     if (!wrapper) return;
 
-    const feedback = document.getElementById('copyFeedbackDropdown');
     const emailDisplay = document.getElementById('emailDisplayDropdown');
+    const feedback = document.getElementById('copyFeedbackDropdown');
     const email = 'viniguimaraes@terra.com.br';
     let timeoutId = null;
 
@@ -334,12 +334,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
         wrapper.classList.add('copied');
         const originalEmail = emailDisplay.textContent;
+        
+        // Substitui o e-mail por "copiado!"
         emailDisplay.textContent = 'copiado!';
         feedback.textContent = ''; // Limpa o feedback ao lado
 
-        navigator.clipboard.writeText(email).then(() => {
-            // já está mostrando "copiado!"
-        }).catch(() => {
+        navigator.clipboard.writeText(email).catch(() => {
             const textarea = document.createElement('textarea');
             textarea.value = email;
             document.body.appendChild(textarea);
