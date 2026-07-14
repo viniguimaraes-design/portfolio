@@ -1044,3 +1044,90 @@ body {
 .menu-contato-social a:hover {
     color: rgba(66, 133, 244, 1);
 }
+
+/* ===== CONTATO / REDES NO MENU MOBILE (sem título) ===== */
+.menu-contato-mobile {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0;
+    width: 100%;
+}
+
+/* E-mail centralizado */
+.menu-contato-email .contact-email-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.2rem 0.8rem;
+    width: auto;
+    justify-content: center;
+}
+
+.menu-contato-email .contact-email-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.02rem 0.4rem;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    user-select: none;
+    -webkit-user-select: none;
+    background-color: transparent !important;
+}
+
+.menu-contato-email .contact-email-wrapper .contact-email {
+    font-size: 1rem;
+    font-weight: 300;
+    font-variation-settings: 'wght' 300;
+    color: #000;
+    white-space: nowrap;
+    text-align: center;
+}
+
+.menu-contato-email .contact-email-wrapper .copy-icon {
+    font-size: 0.8rem;
+    color: #666;
+    transition: color 0.2s;
+    flex-shrink: 0;
+}
+
+.menu-contato-email .copy-feedback {
+    font-size: 0.8rem;
+    color: #888;
+    min-width: 3rem;
+    transition: color 0.2s;
+}
+
+.menu-contato-email .contact-email-wrapper:hover {
+    background-color: rgba(66, 133, 244, 0.2);
+}
+
+.menu-contato-email .contact-email-wrapper.copied {
+    background-color: transparent !important;
+}
+
+.menu-contato-email .contact-email-wrapper:active {
+    background-color: transparent !important;
+}
+
+/* Ícones menores e centralizados */
+.menu-contato-social {
+    display: flex;
+    gap: 0.8rem;
+    justify-content: center;
+    padding: 0.2rem 0 0.5rem 0;
+}
+
+.menu-contato-social a {
+    color: #888;
+    font-size: 1rem;
+    transition: color 0.2s;
+}
+
+.menu-contato-social a:hover {
+    color: rgba(66, 133, 244, 1);
+}
