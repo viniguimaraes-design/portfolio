@@ -1052,7 +1052,7 @@ body {
 
 .menu-contato-social a {
     color: #888;
-    font-size: 0.8rem;
+    font-size: 0.8rem !important;
     transition: color 0.2s;
 }
 
