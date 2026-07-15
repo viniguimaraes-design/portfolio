@@ -381,8 +381,8 @@ body {
     justify-content: center;
     gap: 2rem;
     width: 100%;
-    padding: 5rem 2rem 2rem 2rem;
-    margin-top: -3rem;
+    padding: 5rem 2rem 2rem 2rem !important;
+    margin-top: 0rem !important;
 }
 
 .fullscreen-menu ul {
