@@ -1045,14 +1045,14 @@ body {
 /* ===== ÍCONES SOCIAIS (MENORES E MAIS PRÓXIMOS) ===== */
 .menu-contato-social {
     display: flex;
-    gap: 0.8rem;
+    gap: 1.5rem;
     justify-content: center;
     padding: 0.2rem 0 0.5rem 0;
 }
 
 .menu-contato-social a {
     color: #888;
-    font-size: 0.8rem !important;
+    font-size: 1.5rem !important;
     transition: color 0.2s;
 }
 
