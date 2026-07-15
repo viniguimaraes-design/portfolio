@@ -436,19 +436,19 @@ body {
 
 .menu-speciais li a {
     font-size: 1rem !important;
-    font-weight: 300;
-    font-variation-settings: 'wght' 300;
-    color: #000;
-    text-decoration: none;
+    font-weight: 300 !important;
+    font-variation-settings: 'wght' 300 !important;
+    color: #000 !important;
+    text-decoration: none !important;
     text-transform: none !important;
-    letter-spacing: 1px; /* ← MESMO DO E-MAIL */
-    transition: background-color 0.2s, color 0.2s;
+    letter-spacing: 1px !important;
+    transition: background-color 0.2s, color 0.2s !important;
 }
 
 .menu-speciais li a:hover {
-    background-color: rgba(66, 133, 244, 0.2);
-    color: #000;
-    font-variation-settings: 'wght' 300; /* ← MANTÉM O PESO */
+    background-color: rgba(66, 133, 244, 0.2) !important;
+    color: #000 !important;
+    font-variation-settings: 'wght' 300 !important;
 }
 
 .menu-speciais li:first-child a::before {
