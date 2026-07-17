@@ -240,6 +240,14 @@ for (let [titulo1, titulo2] of ordemDesktop) {
     `;
 }
 grid.innerHTML = html;
+ 
+            } catch (error) {
+                console.error('Erro ao carregar dados:', error);
+                document.getElementById('about-content').innerHTML = '<p>Erro ao carregar conteúdo. Verifique se a planilha está publicada.</p>';
+            }
+        }
+
+        carregarDados();
     </script>
 </body>
 </html>
