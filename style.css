@@ -776,7 +776,7 @@ body {
 .about-item p a {
     text-decoration: none;
     color: inherit;
-    padding: 0.02rem 0.2rem;
+    padding: 0rem 0rem;
     border-radius: 3px;
     background-color: #f7f7f7;
     transition: background-color 0.2s ease;
