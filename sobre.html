@@ -192,62 +192,54 @@
 
                 const grid = document.getElementById('about-grid');
 
-                // ===== ORDEM DAS COLUNAS NO DESKTOP =====
-                const ordemDesktop = [
-                    ['Formação', 'Experiência'],
-                    ['Workshops', 'Palestras'],
-                    ['Organização de eventos', 'Exposições'],
-                    ['Podcast', 'Imprensa'],
-                    ['Publicações', 'Prêmios e títulos']
-                ];
+// ===== ORDEM DAS COLUNAS NO DESKTOP =====
+const ordemDesktop = [
+    ['Formação', 'Experiência'],
+    ['Workshops', 'Palestras'],
+    ['Organização de eventos', 'Exposições'],
+    ['Podcast', 'Imprensa'],
+    ['Publicações', 'Prêmios e títulos']
+];
 
-                let html = '';
-                for (let [titulo1, titulo2] of ordemDesktop) {
-                    const item1 = grupos[titulo1] ? { subtitulo: titulo1, conteudo: grupos[titulo1] } : null;
-                    const item2 = grupos[titulo2] ? { subtitulo: titulo2, conteudo: grupos[titulo2] } : null;
+let html = '';
+for (let [titulo1, titulo2] of ordemDesktop) {
+    const item1 = grupos[titulo1] ? { subtitulo: titulo1, conteudo: grupos[titulo1] } : null;
+    const item2 = grupos[titulo2] ? { subtitulo: titulo2, conteudo: grupos[titulo2] } : null;
 
-                    let conteudo1 = '';
-                    if (item1) {
-                        for (let linha of item1.conteudo) {
-                            const linhaConvertida = linha
-                                .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-                                .replace(/\n/g, '<br>');
-                            conteudo1 += `<p>${linhaConvertida}</p>`;
-                        }
-                    }
-
-                    let conteudo2 = '';
-                    if (item2) {
-                        for (let linha of item2.conteudo) {
-                            const linhaConvertida = linha
-                                .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-                                .replace(/\n/g, '<br>');
-                            conteudo2 += `<p>${linhaConvertida}</p>`;
-                        }
-                    }
-
-                    html += `
-                        <div class="about-row">
-                            <div class="about-item">
-                                <h3>${item1 ? item1.subtitulo : ''}</h3>
-                                ${conteudo1}
-                            </div>
-                            <div class="about-item">
-                                <h3>${item2 ? item2.subtitulo : ''}</h3>
-                                ${conteudo2}
-                            </div>
-                        </div>
-                    `;
-                }
-                grid.innerHTML = html;
-
-            } catch (error) {
-                console.error('Erro ao carregar dados:', error);
-                document.getElementById('about-content').innerHTML = '<p>Erro ao carregar conteúdo. Verifique se a planilha está publicada.</p>';
-            }
+    let conteudo1 = '';
+    if (item1) {
+        for (let linha of item1.conteudo) {
+            const linhaConvertida = linha
+                .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                .replace(/\n/g, '<br>');
+            conteudo1 += `<p>${linhaConvertida}</p>`;
         }
+    }
 
-        carregarDados();
+    let conteudo2 = '';
+    if (item2) {
+        for (let linha of item2.conteudo) {
+            const linhaConvertida = linha
+                .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                .replace(/\n/g, '<br>');
+            conteudo2 += `<p>${linhaConvertida}</p>`;
+        }
+    }
+
+    html += `
+        <div class="about-row">
+            <div class="about-item">
+                <h3>${item1 ? item1.subtitulo : ''}</h3>
+                ${conteudo1}
+            </div>
+            <div class="about-item">
+                <h3>${item2 ? item2.subtitulo : ''}</h3>
+                ${conteudo2}
+            </div>
+        </div>
+    `;
+}
+grid.innerHTML = html;
     </script>
 </body>
 </html>
