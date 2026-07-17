@@ -119,7 +119,7 @@
     <script src="script.js"></script>
    
     <script>
-               // ===== PARSER CSV =====
+         // ===== PARSER CSV =====
         function parseCSV(csv) {
             const resultado = [];
             let i = 0;
@@ -192,13 +192,27 @@
 
                 const grid = document.getElementById('about-grid');
 
+                // ===== ÍCONES PARA OS SUBTÍTULOS =====
+                const icones = {
+                    'Formação': 'fa-graduation-cap',
+                    'Experiência': 'fa-briefcase',
+                    'Workshops': 'fa-tools',
+                    'Palestras': 'fa-microphone',
+                    'Exposições': 'fa-palette',
+                    'Prêmios e títulos': 'fa-trophy',
+                    'Publicações': 'fa-file-alt',
+                    'Podcast': 'fa-podcast',
+                    'Imprensa': 'fa-newspaper',
+                    'Organização de eventos': 'fa-calendar-alt'
+                };
+
                 // ===== ORDEM DESKTOP (personalizada) =====
                 const ordemDesktop = [
                     ['Formação', 'Experiência'],
                     ['Workshops', 'Palestras'],
-                    ['Organização de Eventos', 'Exposições'],
-                    ['Podcasts', 'Imprensa'],
-                    ['Publicações', 'Premiações']
+                    ['Organização de eventos', 'Exposições'],
+                    ['Podcast', 'Imprensa'],
+                    ['Publicações', 'Prêmios e títulos']
                 ];
 
                 // ===== ORDEM MOBILE (da planilha) =====
@@ -230,14 +244,17 @@
                         }
                     }
 
+                    const icone1 = icones[titulo1] || 'fa-tag';
+                    const icone2 = icones[titulo2] || 'fa-tag';
+
                     htmlDesktop += `
                         <div class="about-row">
                             <div class="about-item">
-                                <h3>${item1 ? item1.subtitulo : ''}</h3>
+                                <h3><i class="fas ${icone1}"></i> ${item1 ? item1.subtitulo : ''}</h3>
                                 ${conteudo1}
                             </div>
                             <div class="about-item">
-                                <h3>${item2 ? item2.subtitulo : ''}</h3>
+                                <h3><i class="fas ${icone2}"></i> ${item2 ? item2.subtitulo : ''}</h3>
                                 ${conteudo2}
                             </div>
                         </div>
@@ -256,9 +273,10 @@
                         conteudo += `<p>${linhaConvertida}</p>`;
                     }
 
+                    const icone = icones[titulo] || 'fa-tag';
                     htmlMobile += `
                         <div class="about-item">
-                            <h3>${titulo}</h3>
+                            <h3><i class="fas ${icone}"></i> ${titulo}</h3>
                             ${conteudo}
                         </div>
                     `;
