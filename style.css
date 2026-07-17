@@ -169,7 +169,6 @@ body {
     width: 100%;
 }
 
-/* Container do e-mail no dropdown */
 .desktop-menu ul li .dropdown-contato .dropdown-email .contact-email-wrapper {
     display: flex;
     align-items: center;
@@ -184,7 +183,6 @@ body {
     justify-content: flex-end;
 }
 
-/* Texto do e-mail */
 .desktop-menu ul li .dropdown-contato .dropdown-email .contact-email-wrapper .contact-email {
     font-size: 0.9rem;
     font-weight: 300;
@@ -194,7 +192,6 @@ body {
     letter-spacing: 1px;
 }
 
-/* Ícone de copiar */
 .desktop-menu ul li .dropdown-contato .dropdown-email .contact-email-wrapper .copy-icon {
     font-size: 0.7rem;
     color: #666;
@@ -723,9 +720,8 @@ body {
     width: 100%;
 }
 
-/* ===== MOBILE (padrão): uma coluna ===== */
 .about-row {
-    display: block; /* ← UMA COLUNA NO MOBILE */
+    display: block;
     margin-bottom: 2.5rem;
 }
 
@@ -740,6 +736,14 @@ body {
     text-transform: uppercase;
     margin-bottom: 0.6rem;
     color: #000;
+}
+
+.about-item h3 i {
+    margin-right: 0.6rem;
+    color: #888;
+    font-size: 0.9rem;
+    width: 1.2rem;
+    text-align: center;
 }
 
 .about-item p {
@@ -757,39 +761,9 @@ body {
         gap: 3rem 4rem;
         margin-bottom: 2.5rem;
     }
-
     .about-item {
         margin-bottom: 0;
     }
-}
-}
-
-/* ===== ADICIONADA REGRA .about-row ===== */
-.about-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem 4rem;
-    margin-bottom: 2.5rem;
-}
-
-.about-item {
-    margin-bottom: 0;
-}
-
-.about-item h3 {
-    font-size: 1rem;
-    font-weight: 800;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-    margin-bottom: 0.6rem;
-    color: #000;
-}
-
-.about-item p {
-    font-size: 0.95rem;
-    line-height: 1.5;
-    margin-bottom: 0.5rem;
-    color: #222;
 }
 
 /* ===== LINKS COM ÍCONE ===== */
@@ -845,23 +819,6 @@ body {
     }
     .menu-toggle {
         display: block;
-    }
-}
-
-@media (max-width: 768px) {
-    .about-grid {
-        grid-template-columns: 1fr;
-        gap: 0.5rem;
-    }
-
-    .bio {
-        font-size: 1.2rem;
-        line-height: 1.6;
-        margin-bottom: 2.5rem;
-    }
-
-    .about-item {
-        margin-bottom: 2rem;
     }
 }
 
@@ -972,7 +929,6 @@ body {
     width: 100%;
 }
 
-/* ===== E-MAIL CENTRALIZADO ===== */
 .menu-contato-email {
     width: 100%;
     display: flex;
@@ -1034,7 +990,6 @@ body {
     background-color: transparent !important;
 }
 
-/* ===== ÍCONES SOCIAIS (MENORES E MAIS PRÓXIMOS) ===== */
 .menu-contato-social {
     display: flex;
     gap: 1.5rem;
@@ -1053,7 +1008,6 @@ body {
 }
 
 /* ===== SOBRE: DESKTOP E MOBILE ===== */
-/* Desktop: mostra a versão desktop, esconde a mobile */
 @media (min-width: 769px) {
     .mobile-version {
         display: none;
@@ -1063,7 +1017,6 @@ body {
     }
 }
 
-/* Mobile: mostra a versão mobile, esconde a desktop */
 @media (max-width: 768px) {
     .desktop-version {
         display: none;
