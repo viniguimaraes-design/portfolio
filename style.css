@@ -1053,15 +1053,23 @@ body {
 }
 
 /* ===== SOBRE: DESKTOP E MOBILE ===== */
+/* Desktop: mostra a versão desktop, esconde a mobile */
 @media (min-width: 769px) {
     .mobile-version {
         display: none;
     }
+    .desktop-version {
+        display: block;
+    }
 }
 
+/* Mobile: mostra a versão mobile, esconde a desktop */
 @media (max-width: 768px) {
     .desktop-version {
         display: none;
+    }
+    .mobile-version {
+        display: block;
     }
     .about-row {
         display: block;
