@@ -719,19 +719,18 @@ body {
 }
 
 .about-grid {
-    display: block; /* ← MUDE DE 'grid' PARA 'block' */
+    display: block;
     width: 100%;
 }
 
+/* ===== MOBILE (padrão): uma coluna ===== */
 .about-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem 4rem;
+    display: block; /* ← UMA COLUNA NO MOBILE */
     margin-bottom: 2.5rem;
 }
 
 .about-item {
-    margin-bottom: 0;
+    margin-bottom: 2rem;
 }
 
 .about-item h3 {
@@ -748,6 +747,21 @@ body {
     line-height: 1.5;
     margin-bottom: 0.5rem;
     color: #222;
+}
+
+/* ===== DESKTOP: duas colunas ===== */
+@media (min-width: 768px) {
+    .about-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem 4rem;
+        margin-bottom: 2.5rem;
+    }
+
+    .about-item {
+        margin-bottom: 0;
+    }
+}
 }
 
 /* ===== ADICIONADA REGRA .about-row ===== */
