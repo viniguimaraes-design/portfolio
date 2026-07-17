@@ -219,69 +219,71 @@
                 const ordemMobile = Object.keys(grupos);
 
                 // ===== RENDERIZAR DESKTOP =====
-                let htmlDesktop = '';
-                for (let [titulo1, titulo2] of ordemDesktop) {
-                    const item1 = grupos[titulo1] ? { subtitulo: titulo1, conteudo: grupos[titulo1] } : null;
-                    const item2 = grupos[titulo2] ? { subtitulo: titulo2, conteudo: grupos[titulo2] } : null;
+let htmlDesktop = '';
+for (let [titulo1, titulo2] of ordemDesktop) {
+    const item1 = grupos[titulo1] ? { subtitulo: titulo1, conteudo: grupos[titulo1] } : null;
+    const item2 = grupos[titulo2] ? { subtitulo: titulo2, conteudo: grupos[titulo2] } : null;
 
-                    let conteudo1 = '';
-                    if (item1) {
-                        for (let linha of item1.conteudo) {
-                            const linhaConvertida = linha
-                                .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-                                .replace(/\n/g, '<br>');
-                            conteudo1 += `<p>${linhaConvertida}</p>`;
-                        }
-                    }
+    let conteudo1 = '';
+    if (item1) {
+        for (let linha of item1.conteudo) {
+            const linhaConvertida = linha
+                .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                .replace(/\*(.*?)\*/g, '<em>$1</em>')   // ← ITÁLICO
+                .replace(/\n/g, '<br>');
+            conteudo1 += `<p>${linhaConvertida}</p>`;
+        }
+    }
 
-                    let conteudo2 = '';
-                    if (item2) {
-                        for (let linha of item2.conteudo) {
-                            const linhaConvertida = linha
-                                .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-                                .replace(/\n/g, '<br>');
-                            conteudo2 += `<p>${linhaConvertida}</p>`;
-                        }
-                    }
+    let conteudo2 = '';
+    if (item2) {
+        for (let linha of item2.conteudo) {
+            const linhaConvertida = linha
+                .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                .replace(/\*(.*?)\*/g, '<em>$1</em>')   // ← ITÁLICO
+                .replace(/\n/g, '<br>');
+            conteudo2 += `<p>${linhaConvertida}</p>`;
+        }
+    }
 
-                    const icone1 = icones[titulo1] || 'fa-tag';
-                    const icone2 = icones[titulo2] || 'fa-tag';
+    const icone1 = icones[titulo1] || 'fa-tag';
+    const icone2 = icones[titulo2] || 'fa-tag';
 
-                    htmlDesktop += `
-                        <div class="about-row">
-                            <div class="about-item">
-                                <h3><i class="fas ${icone1}"></i> ${item1 ? item1.subtitulo : ''}</h3>
-                                ${conteudo1}
-                            </div>
-                            <div class="about-item">
-                                <h3><i class="fas ${icone2}"></i> ${item2 ? item2.subtitulo : ''}</h3>
-                                ${conteudo2}
-                            </div>
-                        </div>
-                    `;
-                }
+    htmlDesktop += `
+        <div class="about-row">
+            <div class="about-item">
+                <h3><i class="fas ${icone1}"></i> ${item1 ? item1.subtitulo : ''}</h3>
+                ${conteudo1}
+            </div>
+            <div class="about-item">
+                <h3><i class="fas ${icone2}"></i> ${item2 ? item2.subtitulo : ''}</h3>
+                ${conteudo2}
+            </div>
+        </div>
+    `;
+}
 
-                // ===== RENDERIZAR MOBILE =====
-                let htmlMobile = '';
-                for (let titulo of ordemMobile) {
-                    const item = grupos[titulo];
-                    let conteudo = '';
-                    for (let linha of item) {
-                        const linhaConvertida = linha
-                            .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-                            .replace(/\n/g, '<br>');
-                        conteudo += `<p>${linhaConvertida}</p>`;
-                    }
+// ===== RENDERIZAR MOBILE =====
+let htmlMobile = '';
+for (let titulo of ordemMobile) {
+    const item = grupos[titulo];
+    let conteudo = '';
+    for (let linha of item) {
+        const linhaConvertida = linha
+            .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+            .replace(/\*(.*?)\*/g, '<em>$1</em>')   // ← ITÁLICO
+            .replace(/\n/g, '<br>');
+        conteudo += `<p>${linhaConvertida}</p>`;
+    }
 
-                    const icone = icones[titulo] || 'fa-tag';
-                    htmlMobile += `
-                        <div class="about-item">
-                            <h3><i class="fas ${icone}"></i> ${titulo}</h3>
-                            ${conteudo}
-                        </div>
-                    `;
-                }
-
+    const icone = icones[titulo] || 'fa-tag';
+    htmlMobile += `
+        <div class="about-item">
+            <h3><i class="fas ${icone}"></i> ${titulo}</h3>
+            ${conteudo}
+        </div>
+    `;
+}
                 // ===== MONTAR O GRID =====
                 grid.innerHTML = `
                     <div class="desktop-version">${htmlDesktop}</div>
