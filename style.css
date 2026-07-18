@@ -759,6 +759,12 @@ body {
     font-weight: 700;
 }
 
+.about-item p em {
+    font-family: 'Merriweather', serif;
+    font-weight: 500;
+    font-style: italic;
+}
+
 /* ===== DESKTOP: duas colunas ===== */
 @media (min-width: 768px) {
     .about-row {
