@@ -228,6 +228,7 @@ body {
 }
 
 /* ===== REDES SOCIAIS NO DROPDOWN ===== */
+/* ===== REDES SOCIAIS NO DROPDOWN ===== */
 .desktop-menu ul li .dropdown-contato .dropdown-social {
     display: flex;
     flex-direction: column;
@@ -250,7 +251,7 @@ body {
     text-decoration: none;
     transition: background-color 0.2s, color 0.2s;
     justify-content: flex-start;
-    flex-shrink: 0;
+    width: 100%; /* ← GARANTE QUE OCUPE TODO O ESPAÇO */
 }
 
 .desktop-menu ul li .dropdown-contato .dropdown-social a i {
@@ -267,6 +268,7 @@ body {
     color: #666;
     opacity: 0;
     transition: opacity 0.2s, color 0.2s;
+    white-space: nowrap; /* ← IMPEDE QUEBRA DE LINHA E OCUPA ESPAÇO */
 }
 
 .desktop-menu ul li .dropdown-contato .dropdown-social a:hover {
