@@ -267,10 +267,12 @@ body {
     font-size: 0.9rem;
     font-weight: 300;
     color: #666;
-    opacity: 0; /* ← INVISÍVEL, MAS OCUPA ESPAÇO */
+    opacity: 0; /* ← INVISÍVEL NO NORMAL */
     transition: opacity 0.2s, color 0.2s;
     white-space: nowrap;
-    display: inline-block; /* ← GARANTE QUE OCUPE ESPAÇO */
+    display: inline-block;
+    min-width: 6rem; /* ← LARGURA FIXA PARA O TEXTO MAIS LONGO */
+    text-align: left; /* ← ALINHA O TEXTO À ESQUERDA */
 }
 
 .desktop-menu ul li .dropdown-contato .dropdown-social a:hover .social-label {
