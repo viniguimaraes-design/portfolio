@@ -228,7 +228,6 @@ body {
 }
 
 /* ===== REDES SOCIAIS NO DROPDOWN ===== */
-/* ===== REDES SOCIAIS NO DROPDOWN ===== */
 .desktop-menu ul li .dropdown-contato .dropdown-social {
     display: flex;
     flex-direction: column;
@@ -251,7 +250,8 @@ body {
     text-decoration: none;
     transition: background-color 0.2s, color 0.2s;
     justify-content: flex-start;
-    width: 100%; /* ← GARANTE QUE OCUPE TODO O ESPAÇO */
+    width: 100%;
+    padding-left: 2.5rem; /* ← ESPAÇO FIXO PARA ÍCONE + TEXTO */
 }
 
 .desktop-menu ul li .dropdown-contato .dropdown-social a i {
@@ -260,6 +260,7 @@ body {
     text-align: center;
     font-size: 1.1rem;
     color: #666;
+    margin-left: -1.8rem; /* ← PUXA O ÍCONE PARA A ESQUERDA */
 }
 
 .desktop-menu ul li .dropdown-contato .dropdown-social a .social-label {
@@ -268,16 +269,16 @@ body {
     color: #666;
     opacity: 0;
     transition: opacity 0.2s, color 0.2s;
-    white-space: nowrap; /* ← IMPEDE QUEBRA DE LINHA E OCUPA ESPAÇO */
-}
-
-.desktop-menu ul li .dropdown-contato .dropdown-social a:hover {
-    background-color: rgba(66, 133, 244, 0.2);
-    color: #000;
+    white-space: nowrap;
 }
 
 .desktop-menu ul li .dropdown-contato .dropdown-social a:hover .social-label {
     opacity: 1;
+    color: #000;
+}
+
+.desktop-menu ul li .dropdown-contato .dropdown-social a:hover {
+    background-color: rgba(66, 133, 244, 0.2);
     color: #000;
 }
 
