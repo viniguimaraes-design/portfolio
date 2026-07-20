@@ -249,7 +249,8 @@ body {
     padding: 0.2rem 0.8rem;
     text-decoration: none;
     transition: background-color 0.2s, color 0.2s;
-    width: 100%;
+    justify-content: flex-start;
+    flex-shrink: 0;
 }
 
 .desktop-menu ul li .dropdown-contato .dropdown-social a i {
