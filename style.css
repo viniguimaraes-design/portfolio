@@ -260,7 +260,7 @@ body {
     text-align: center;
     font-size: 1.1rem;
     color: #666;
-    margin-left: 1.2rem; /* ← PUXA O ÍCONE PARA A ESQUERDA */
+    margin-left: 0rem; /* ← PUXA O ÍCONE PARA A ESQUERDA */
 }
 
 .desktop-menu ul li .dropdown-contato .dropdown-social a .social-label {
