@@ -251,7 +251,7 @@ body {
     transition: background-color 0.2s, color 0.2s;
     justify-content: flex-start;
     width: 100%;
-    padding-left: 2.5rem; /* ← ESPAÇO FIXO PARA ÍCONE + TEXTO */
+    padding-left: 0rem; /* ← ESPAÇO FIXO PARA ÍCONE + TEXTO */
 }
 
 .desktop-menu ul li .dropdown-contato .dropdown-social a i {
@@ -260,7 +260,7 @@ body {
     text-align: center;
     font-size: 1.1rem;
     color: #666;
-    margin-left: -1.8rem; /* ← PUXA O ÍCONE PARA A ESQUERDA */
+    margin-left: 1.2rem; /* ← PUXA O ÍCONE PARA A ESQUERDA */
 }
 
 .desktop-menu ul li .dropdown-contato .dropdown-social a .social-label {
