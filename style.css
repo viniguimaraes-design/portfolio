@@ -760,8 +760,8 @@ body {
 }
 
 .about-item p em {
-    font-family: 'Roboto', sans-serif;
-    font-size: 0.85rem !important;
+    font-family: 'Roboto Serif', serif;
+    font-size: 0.85rem;
     font-weight: 300;
     font-style: italic;
 }
