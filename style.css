@@ -251,7 +251,7 @@ body {
     transition: background-color 0.2s, color 0.2s;
     justify-content: flex-start;
     width: 100%;
-    padding-left: 0rem; /* ← ESPAÇO FIXO PARA ÍCONE + TEXTO */
+    padding-left: 1.5rem; /* ← ESPAÇO FIXO PARA ÍCONE + TEXTO */
 }
 
 .desktop-menu ul li .dropdown-contato .dropdown-social a i {
@@ -260,16 +260,17 @@ body {
     text-align: center;
     font-size: 1.1rem;
     color: #666;
-    margin-left: 0.5rem; /* ← PUXA O ÍCONE PARA A ESQUERDA */
+    margin-left: -1.0rem; /* ← AJUSTE PARA ALINHAR O ÍCONE */
 }
 
 .desktop-menu ul li .dropdown-contato .dropdown-social a .social-label {
     font-size: 0.9rem;
     font-weight: 300;
     color: #666;
-    opacity: 0;
+    opacity: 0; /* ← INVISÍVEL, MAS OCUPA ESPAÇO */
     transition: opacity 0.2s, color 0.2s;
     white-space: nowrap;
+    display: inline-block; /* ← GARANTE QUE OCUPE ESPAÇO */
 }
 
 .desktop-menu ul li .dropdown-contato .dropdown-social a:hover .social-label {
