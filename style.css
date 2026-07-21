@@ -268,7 +268,7 @@ body {
     transition: color 0.2s;
     white-space: nowrap;
     display: inline-block;
-    width: 5.5rem; /* ← LARGURA FIXA */
+    min-width: 5.5rem;
     text-align: left;
 }
 
