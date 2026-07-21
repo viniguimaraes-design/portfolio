@@ -265,17 +265,20 @@ body {
 .desktop-menu ul li .dropdown-contato .dropdown-social a .social-label {
     font-size: 0.9rem;
     font-weight: 300;
-    color: transparent; /* ← INVISÍVEL (mas ocupa espaço) */
-    transition: color 0.2s;
+    color: #666;
     white-space: nowrap;
     display: inline-block;
-    min-width: 5.5rem;
+    width: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: width 0.2s ease, opacity 0.2s ease;
     text-align: left;
-    padding-left: 0.6rem;
 }
 
 .desktop-menu ul li .dropdown-contato .dropdown-social a:hover .social-label {
-    color: #000; /* ← VISÍVEL NO HOVER */
+    width: 5.5rem;
+    opacity: 1;
+    color: #000;
 }
 
 .desktop-menu ul li .dropdown-contato .dropdown-social a:hover {
