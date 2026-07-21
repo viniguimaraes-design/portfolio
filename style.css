@@ -264,18 +264,16 @@ body {
 .desktop-menu ul li .dropdown-contato .dropdown-social a .social-label {
     font-size: 0.9rem;
     font-weight: 300;
-    color: #666;
-    opacity: 0; /* ← INVISÍVEL, MAS OCUPA ESPAÇO */
-    transition: opacity 0.2s, color 0.2s;
+    color: transparent; /* ← INVISÍVEL (mas ocupa espaço) */
+    transition: color 0.2s;
     white-space: nowrap;
     display: inline-block;
-    min-width: 5.5rem; /* ← LARGURA FIXA PARA O TEXTO MAIS LONGO ("LinkedIn") */
+    width: 5.5rem; /* ← LARGURA FIXA */
     text-align: left;
 }
 
 .desktop-menu ul li .dropdown-contato .dropdown-social a:hover .social-label {
-    opacity: 1;
-    color: #000;
+    color: #000; /* ← VISÍVEL NO HOVER */
 }
 
 .desktop-menu ul li .dropdown-contato .dropdown-social a:hover {
