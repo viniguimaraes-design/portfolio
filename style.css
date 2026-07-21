@@ -265,16 +265,16 @@ body {
     font-size: 0.9rem;
     font-weight: 300;
     color: #666;
-    visibility: hidden; /* ← INVISÍVEL, MAS OCUPA ESPAÇO */
+    opacity: 0; /* ← INVISÍVEL, MAS OCUPA ESPAÇO */
+    transition: opacity 0.2s, color 0.2s;
     white-space: nowrap;
     display: inline-block;
-    min-width: 6rem; /* ← LARGURA FIXA PARA O TEXTO MAIS LONGO */
+    min-width: 5.5rem; /* ← LARGURA FIXA PARA O TEXTO MAIS LONGO ("LinkedIn") */
     text-align: left;
-    transition: visibility 0.2s, color 0.2s;
 }
 
 .desktop-menu ul li .dropdown-contato .dropdown-social a:hover .social-label {
-    visibility: visible; /* ← VISÍVEL NO HOVER */
+    opacity: 1;
     color: #000;
 }
 
