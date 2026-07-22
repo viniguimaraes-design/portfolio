@@ -263,15 +263,8 @@ body {
 .desktop-menu ul li .dropdown-contato .dropdown-social a .social-label {
     font-size: 0.9rem;
     font-weight: 300;
-    color: transparent; /* ← INVISÍVEL, MAS OCUPA ESPAÇO */
-    white-space: nowrap;
+    color: #666;
     transition: color 0.2s;
-    min-width: 5.5rem; /* ← LARGURA FIXA PARA O TEXTO MAIS LONGO */
-    text-align: left;
-}
-
-.desktop-menu ul li .dropdown-contato .dropdown-social a:hover .social-label {
-    color: #000; /* ← VISÍVEL NO HOVER */
 }
 
 .desktop-menu ul li .dropdown-contato .dropdown-social a:hover {
@@ -280,6 +273,10 @@ body {
 }
 
 .desktop-menu ul li .dropdown-contato .dropdown-social a:hover i {
+    color: #000;
+}
+
+.desktop-menu ul li .dropdown-contato .dropdown-social a:hover .social-label {
     color: #000;
 }
 
