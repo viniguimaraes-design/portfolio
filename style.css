@@ -241,7 +241,7 @@ body {
 .desktop-menu ul li .dropdown-contato .dropdown-social a {
     display: flex;
     align-items: center;
-    gap: 0.8rem; /* ← DISTÂNCIA ENTRE ÍCONE E TEXTO */
+    gap: 0.4rem; /* ← REDUZA AQUI (antes 0.8rem) */
     font-size: 0.9rem;
     font-weight: 300;
     font-variation-settings: 'wght' 300;
