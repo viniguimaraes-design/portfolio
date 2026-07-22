@@ -241,7 +241,7 @@ body {
 .desktop-menu ul li .dropdown-contato .dropdown-social a {
     display: flex;
     align-items: center;
-    position: relative;
+    gap: 0.6rem;
     font-size: 0.9rem;
     font-weight: 300;
     font-variation-settings: 'wght' 300;
@@ -261,22 +261,17 @@ body {
 }
 
 .desktop-menu ul li .dropdown-contato .dropdown-social a .social-label {
-    position: absolute;
-    left: 2.2rem;
     font-size: 0.9rem;
     font-weight: 300;
-    color: transparent;
+    color: transparent; /* ← INVISÍVEL, MAS OCUPA ESPAÇO */
     white-space: nowrap;
-    pointer-events: none;
-    transition: color 0.2s ease;
+    transition: color 0.2s;
+    min-width: 5.5rem; /* ← LARGURA FIXA PARA O TEXTO MAIS LONGO */
+    text-align: left;
 }
 
 .desktop-menu ul li .dropdown-contato .dropdown-social a:hover .social-label {
-    color: #000;
-}
-
-.desktop-menu ul li .dropdown-contato .dropdown-social a:hover i {
-    color: #000;
+    color: #000; /* ← VISÍVEL NO HOVER */
 }
 
 .desktop-menu ul li .dropdown-contato .dropdown-social a:hover {
