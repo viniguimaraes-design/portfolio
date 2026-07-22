@@ -241,7 +241,7 @@ body {
 .desktop-menu ul li .dropdown-contato .dropdown-social a {
     display: flex;
     align-items: center;
-    gap: 0;
+    gap: 0.6rem;
     font-size: 0.9rem;
     font-weight: 300;
     font-variation-settings: 'wght' 300;
@@ -272,10 +272,11 @@ body {
     opacity: 0;
     transition: width 0.2s ease, opacity 0.2s ease;
     text-align: left;
+    padding-left: 0.6rem;
 }
 
 .desktop-menu ul li .dropdown-contato .dropdown-social a:hover .social-label {
-    width: 5.5rem;
+    width: 6.1rem;
     opacity: 1;
     color: #000;
 }
