@@ -254,7 +254,7 @@ body {
 .desktop-menu ul li .dropdown-contato .dropdown-social a i {
     flex-shrink: 0;
     width: 1.5rem; /* ← LARGURA FIXA PARA OS ÍCONES */
-    text-align: center;
+    text-align: left;
     font-size: 1.1rem;
     color: #666;
 }
