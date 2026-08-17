@@ -242,7 +242,7 @@ body {
 .desktop-menu ul li .dropdown-contato .dropdown-social a {
     display: flex;
     align-items: center;
-    gap: 0.4rem; /* ← REDUZA AQUI (antes 0.8rem) */
+    gap: 0.4rem;
     font-size: 0.9rem;
     font-weight: 300;
     font-variation-settings: 'wght' 300;
@@ -254,7 +254,7 @@ body {
 
 .desktop-menu ul li .dropdown-contato .dropdown-social a i {
     flex-shrink: 0;
-    width: 1.5rem; /* ← LARGURA FIXA PARA OS ÍCONES */
+    width: 1.5rem;
     text-align: left;
     font-size: 1.1rem;
     color: #666;
@@ -746,7 +746,7 @@ body {
 }
 
 .about-item p {
-    font-size: 0.85rem; /* ← DESCRIÇÃO (menor) */
+    font-size: 0.85rem;
     line-height: 1.5;
     margin-bottom: 0.5rem;
     color: #222;
@@ -754,7 +754,7 @@ body {
 }
 
 .about-item p strong {
-    font-size: 1rem; /* ← TÍTULO (mantido) */
+    font-size: 1rem;
     font-weight: 700;
 }
 
@@ -839,7 +839,10 @@ body {
         padding: 0 0rem 2rem 0rem;
     }
     .container {
-        padding: 0;
+        padding: 0 1.5rem; /* ← MANTÉM O ESPAÇO LATERAL DO CONTEÚDO */
+    }
+    .carousel-wrapper {
+        margin: 0 -1.5rem; /* ← ESTICA A IMAGEM PARA FORA DO CONTAINER */
     }
     .logo-text {
         font-size: 1.6rem;
