@@ -28,6 +28,7 @@ body {
 .container {
     max-width: 1200px;
     margin: 0 auto;
+    padding: 0 1.5rem;
 }
 
 /* ===== HEADER ===== */
@@ -836,6 +837,9 @@ body {
 @media (max-width: 640px) {
     body {
         padding: 0 0rem 2rem 0rem;
+    }
+    .container {
+        padding: 0;
     }
     .logo-text {
         font-size: 1.6rem;
