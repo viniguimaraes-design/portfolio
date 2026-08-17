@@ -835,7 +835,7 @@ body {
 
 @media (max-width: 640px) {
     body {
-        padding: 0 1rem 2rem 1rem;
+        padding: 0 0rem 2rem 0rem;
     }
     .logo-text {
         font-size: 1.6rem;
