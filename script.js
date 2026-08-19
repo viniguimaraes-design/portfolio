@@ -95,7 +95,7 @@ async function carregarProjetos() {
 // ===== GERAR TAGS AUTOMATICAMENTE =====
 function gerarTags() {
     const tagsBar = document.getElementById('tagsBar');
-    
+
     const contagem = {};
     todosProjetos.forEach(projeto => {
         projeto.tags.forEach(tag => {
@@ -115,7 +115,8 @@ function gerarTags() {
     tags.forEach(tag => {
         tag.addEventListener('click', function(e) {
             const tagNome = this.dataset.tag;
-            
+
+            // Alterna a classe 'active'
             if (this.classList.contains('active')) {
                 this.classList.remove('active');
                 tagsAtivas = tagsAtivas.filter(t => t !== tagNome);
@@ -123,11 +124,12 @@ function gerarTags() {
                 this.classList.add('active');
                 tagsAtivas.push(tagNome);
             }
-            
+
+            // Se não houver tags ativas, mostra todos os projetos
             if (tagsAtivas.length === 0) {
                 renderizarProjetos(todosProjetos);
             } else {
-                filtrarProjetos();
+                filtrarProjetos(); // ← CORRIGIDO: era "fillrProjetos"
             }
         });
     });
