@@ -129,7 +129,7 @@ function gerarTags() {
             if (tagsAtivas.length === 0) {
                 renderizarProjetos(todosProjetos);
             } else {
-                filtrarProjetos(); // ← CORRIGIDO: era "fillrProjetos"
+                filtrarProjetos();
             }
         });
     });
