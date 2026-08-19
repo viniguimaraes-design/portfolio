@@ -39,7 +39,7 @@ document.addEventListener('keydown', (e) => {
 const URL_PLANILHA_PROJETOS = 'https://raw.githubusercontent.com/viniguimaraes-design/portfolio/refs/heads/main/assets/portfolio.csv';
 
 let todosProjetos = [];
-let tagsAtivas = ['todos'];
+let tagsAtivas = [];
 
 async function carregarProjetos() {
     try {
@@ -95,6 +95,9 @@ async function carregarProjetos() {
 // ===== GERAR TAGS AUTOMATICAMENTE =====
 function gerarTags() {
     const tagsBar = document.getElementById('tagsBar');
+    
+    // Se não houver barra de tags (ex: página Sobre), sai da função
+    if (!tagsBar) return;
 
     const contagem = {};
     todosProjetos.forEach(projeto => {
@@ -103,11 +106,13 @@ function gerarTags() {
         });
     });
 
-    const tagsOrdenadas = Object.keys(contagem).sort((a, b) => contagem[b] - contagem[a]);
+    // Adiciona a tag "todos" manualmente (sempre aparece)
+    const tagsOrdenadas = ['todos', ...Object.keys(contagem).sort((a, b) => contagem[b] - contagem[a])];
 
     let html = '';
     tagsOrdenadas.forEach(tag => {
-        html += `<span class="tag" data-tag="${tag}">${tag}</span>`;
+        const isActive = tag === 'todos' ? 'active' : '';
+        html += `<span class="tag ${isActive}" data-tag="${tag}">${tag}</span>`;
     });
     tagsBar.innerHTML = html;
 
@@ -116,19 +121,29 @@ function gerarTags() {
         tag.addEventListener('click', function(e) {
             const tagNome = this.dataset.tag;
 
-            // Alterna a classe 'active'
-            if (this.classList.contains('active')) {
-                this.classList.remove('active');
-                tagsAtivas = tagsAtivas.filter(t => t !== tagNome);
-            } else {
+            // Se clicar em "todos", reseta o filtro
+            if (tagNome === 'todos') {
+                tags.forEach(t => t.classList.remove('active'));
                 this.classList.add('active');
-                tagsAtivas = tagsAtivas.filter(t => t !== 'todos'); // remove 'todos' assim que uma tag real é ativada
-                tagsAtivas.push(tagNome);
+                tagsAtivas = ['todos'];
+                renderizarProjetos(todosProjetos);
+                return;
             }
 
-            // Se não houver tags ativas, volta ao estado padrão (mostra todos os projetos)
+            // Alterna a classe 'active' na tag clicada
+            this.classList.toggle('active');
+
+            // Remove 'todos' do array de tags ativas
+            tagsAtivas = tagsAtivas.filter(t => t !== 'todos');
+
+            // Atualiza o array de tags ativas com base nas tags que têm a classe 'active'
+            const activeTags = document.querySelectorAll('.tag.active');
+            tagsAtivas = Array.from(activeTags).map(t => t.dataset.tag);
+
+            // Se não houver tags ativas, reseta para 'todos'
             if (tagsAtivas.length === 0) {
                 tagsAtivas = ['todos'];
+                document.querySelector('.tag[data-tag="todos"]').classList.add('active');
                 renderizarProjetos(todosProjetos);
             } else {
                 filtrarProjetos();
@@ -339,7 +354,6 @@ document.addEventListener('DOMContentLoaded', function() {
         wrapper.classList.add('copied');
         const originalEmail = emailDisplay.textContent;
         
-        // Substitui o e-mail por "copiado!" e o ícone por check
         emailDisplay.textContent = 'copiado!';
         copyIcon.className = 'fas fa-check copy-icon';
 
