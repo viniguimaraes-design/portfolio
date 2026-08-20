@@ -1,4 +1,4 @@
-/* ===== RESET ===== */
+se/* ===== RESET ===== */
 * {
     margin: 0;
     padding: 0;
@@ -461,7 +461,7 @@ body {
     font-family: 'Catamaran', sans-serif;
     font-size: 3.5rem;
     font-weight: 300;
-    color: #333;
+    color: #999;
     cursor: pointer;
     z-index: 2;
     padding: 0 0.5rem;
